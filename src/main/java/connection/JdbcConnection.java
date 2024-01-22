@@ -17,7 +17,7 @@ public class JdbcConnection {
         }
     }
 
-    public static Connection getCONNECTION() {
+    public static Connection getConnection() {
         return CONNECTION;
     }
 }
