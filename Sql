@@ -1,24 +1,24 @@
 CREATE TABLE Shareholder (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     name VARCHAR(255),
     national_code VARCHAR(255),
     phone_number VARCHAR(255)
 );
 
 CREATE TABLE Brand (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     name VARCHAR(255),
     website VARCHAR(255)
 );
 
 CREATE TABLE Category (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     name VARCHAR(255),
     description TEXT
 );
 
 CREATE TABLE Product (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     name VARCHAR(255),
     create_date DATE,
     category_id INT,
@@ -28,7 +28,7 @@ CREATE TABLE Product (
 );
 
 CREATE TABLE User (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     name VARCHAR(255),
     username VARCHAR(255),
     email VARCHAR(255),
@@ -36,7 +36,7 @@ CREATE TABLE User (
 );
 
 CREATE TABLE Shareholder_Brand (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     shareholder_id INT,
     brand_id INT,
     FOREIGN KEY (shareholder_id) REFERENCES Shareholder(id),
