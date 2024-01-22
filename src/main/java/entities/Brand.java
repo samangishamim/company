@@ -15,6 +15,8 @@ public class Brand {
     private String brandName;
     private String website;
 
-    public Brand() {
+    public Brand(String brandName, String website) {
+        this.brandName = brandName;
+        this.website = website;
     }
 }
