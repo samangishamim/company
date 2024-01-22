@@ -14,4 +14,7 @@ import java.sql.Connection;
 
 public class ProductRepository {
 
+    public ProductRepository(Connection connection) {
+
+    }
 }
