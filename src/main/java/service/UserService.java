@@ -20,8 +20,21 @@ public class UserService {
         System.out.println("enter your name: ");
         String name = scanner.nextLine();
         String username = getUsernameUnique();
+        String email = getUniqueEmail();
+        getPassword();
 
+    }
 
+    private String getPassword() {
+        String password;
+        while (true) {
+            System.out.println("enter your password: ");
+            password = scanner.nextLine();
+            boolean checkPassword = Validation.checkPassword(password);
+            if (checkPassword)
+                break;
+        }
+        return password;
     }
 
     private String getUsernameUnique() throws SQLException {
