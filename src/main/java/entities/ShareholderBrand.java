@@ -15,4 +15,28 @@ public class ShareholderBrand {
         this.shareholderId = shareholderId;
         this.brandId = brandId;
     }
+
+    public int getShareholderbId() {
+        return shareholderbId;
+    }
+
+    public void setShareholderbId(int shareholderbId) {
+        this.shareholderbId = shareholderbId;
+    }
+
+    public int getShareholderId() {
+        return shareholderId;
+    }
+
+    public void setShareholderId(int shareholderId) {
+        this.shareholderId = shareholderId;
+    }
+
+    public int getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(int brandId) {
+        this.brandId = brandId;
+    }
 }
