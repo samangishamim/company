@@ -1,5 +1,6 @@
 package service;
 
+import entities.User;
 import repository.UserRepository;
 import utilities.Validation;
 
@@ -21,8 +22,14 @@ public class UserService {
         String name = scanner.nextLine();
         String username = getUsernameUnique();
         String email = getUniqueEmail();
-        getPassword();
+        String password = getPassword();
 
+
+        int result = userRepository.SignUp(new User(name, username, email, password));
+        if (result != 0) {
+            System.out.println("you have signup ");
+        } else
+            System.out.println("error");
     }
 
     private String getPassword() {
