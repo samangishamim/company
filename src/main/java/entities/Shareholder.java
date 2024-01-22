@@ -13,4 +13,11 @@ public class Shareholder {
     private String shareholderName;
     private int nationalCode;
     private int phoneNmber;
+
+
+    public Shareholder(String shareholderName, int nationalCode, int phoneNmber) {
+        this.shareholderName = shareholderName;
+        this.nationalCode = nationalCode;
+        this.phoneNmber = phoneNmber;
+    }
 }
