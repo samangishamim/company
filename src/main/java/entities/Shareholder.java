@@ -1,25 +1,24 @@
 package entities;
 
+import lombok.*;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class Shareholder {
     private int shareholderId;
     private String shareholderName;
     private int nationalCode;
-    private int phoneNmber;
+    private int phoneNumber;
 
-    public Shareholder() {
-    }
 
-    public Shareholder(String shareholderName, int nationalCode, int phoneNmber) {
+    public Shareholder(String shareholderName, int nationalCode, int phoneNumber) {
         this.shareholderName = shareholderName;
         this.nationalCode = nationalCode;
-        this.phoneNmber = phoneNmber;
+        this.phoneNumber = phoneNumber;
     }
 
-    public Shareholder(int shareholderId, String shareholderName, int nationalCode, int phoneNmber) {
-        this.shareholderId = shareholderId;
-        this.shareholderName = shareholderName;
-        this.nationalCode = nationalCode;
-        this.phoneNmber = phoneNmber;
-    }
+
 }
