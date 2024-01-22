@@ -1,39 +1,38 @@
-CREATE TABLE Shareholder
+CREATE TABLE shareholder
 (
-    id            SERIAL PRIMARY KEY,
+    shareholder_id            SERIAL PRIMARY KEY,
     name          VARCHAR(255),
-    national_code VARCHAR(255),
+    national_code VARCHAR(255) unique ,
     phone_number  VARCHAR(255)
 );
 
-CREATE TABLE Brand
+CREATE TABLE brand
 (
-    id      SERIAL PRIMARY KEY,
-    name    VARCHAR(255),
+    brand_id      SERIAL PRIMARY KEY,
+    name    VARCHAR(255) unique ,
     website VARCHAR(255)
 );
 
-CREATE TABLE Category
+CREATE TABLE category
 (
-    id          SERIAL PRIMARY KEY,
-    name        VARCHAR(255),
+    category_id          SERIAL PRIMARY KEY,
+    name        VARCHAR(255) unique ,
     description TEXT
 );
 
-CREATE TABLE Product
+CREATE TABLE product
 (
-    id          SERIAL PRIMARY KEY,
+    product_id          SERIAL PRIMARY KEY,
     name        VARCHAR(255),
     create_date DATE,
-    category_id INT,
-    brand_id    INT,
-    FOREIGN KEY (category_id) REFERENCES Category (id),
-    FOREIGN KEY (brand_id) REFERENCES Brand (id)
+    category_id INT references category(category_id),
+    brand_id    INT references  brand(brand_id)
+
 );
 
 CREATE TABLE "user"
 (
-    id       SERIAL PRIMARY KEY,
+    user_id       SERIAL PRIMARY KEY,
     name     VARCHAR(255),
     username  VARCHAR(255) unique ,
     email    VARCHAR(255) unique ,
@@ -43,8 +42,7 @@ CREATE TABLE "user"
 CREATE TABLE Shareholder_Brand
 (
     id             SERIAL PRIMARY KEY,
-    shareholder_id INT,
-    brand_id       INT,
-    FOREIGN KEY (shareholder_id) REFERENCES Shareholder (id),
-    FOREIGN KEY (brand_id) REFERENCES Brand (id)
+    shareholder_id INT references  shareholder(shareholder_id),
+    brand_id       INT references brand (brand_id)
+
 );
