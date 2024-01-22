@@ -12,6 +12,7 @@ public class Shareholder {
     private String shareholderName;
     private int nationalCode;
     private int phoneNumber;
+    private Brand[] brands;
 
 
     public Shareholder(String shareholderName, int nationalCode, int phoneNumber) {
@@ -19,6 +20,8 @@ public class Shareholder {
         this.nationalCode = nationalCode;
         this.phoneNumber = phoneNumber;
     }
+
+
 
 
 }
