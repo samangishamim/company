@@ -8,4 +8,5 @@ public class UserRepository {
     public UserRepository(Connection connection) {
         this.connection = connection;
     }
+
 }
