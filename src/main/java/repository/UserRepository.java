@@ -33,4 +33,12 @@ public class UserRepository {
         ResultSet resultSet = ps.executeQuery();
         return resultSet.next();
     }
+    public boolean isEmailExist(String email) throws SQLException {
+        String existQuery="select * from user where email=?;";
+        PreparedStatement ps = connection.prepareStatement(existQuery);
+        ps.setString(1, email);
+
+        ResultSet resultSet = ps.executeQuery();
+        return resultSet.next();
+    }
 }
