@@ -9,9 +9,12 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class Brand {
     private int brandId;
     private String brandName;
     private String website;
 
+    public Brand() {
+    }
 }
