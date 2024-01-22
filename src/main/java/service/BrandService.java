@@ -5,7 +5,10 @@ import repository.BrandRepository;
 public class BrandService {
 
 
-    public BrandService(repository.BrandRepository brandRepository) {
+    private final BrandRepository brandRepository;
 
+    public BrandService(BrandRepository brandRepository) {
+        this.brandRepository = brandRepository;
     }
+
 }
