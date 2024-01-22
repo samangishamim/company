@@ -77,4 +77,16 @@ public class UserService {
         }
         return email;
     }
+    public void signIn () throws SQLException {
+        System.out.println("***** sign in *****");
+        System.out.println("enter your username: ");
+        String username = scanner.nextLine();
+        System.out.println("enter your password ");
+        String password = scanner.nextLine();
+        boolean signedIn = userRepository.SignIn(username, password);
+        if (signedIn)
+            System.out.println("welcome");
+        else
+            System.out.println("username or password is wrong");
+    }
 }
