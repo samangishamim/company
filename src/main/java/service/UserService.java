@@ -3,7 +3,12 @@ package service;
 import repository.UserRepository;
 
 public class UserService {
-    public UserService(UserRepository userRepository) {
+    private final UserRepository userRepository;
 
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
+
+
+
 }
