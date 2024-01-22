@@ -40,6 +40,8 @@ public class UserService {
             boolean checkPassword = Validation.checkPassword(password);
             if (checkPassword)
                 break;
+            else
+                System.out.println("this is not strong password");
         }
         return password;
     }
@@ -52,6 +54,8 @@ public class UserService {
             boolean usernameExist = userRepository.isUsernameExist(username);
             if (!usernameExist)
                 break;
+            else
+                System.out.println("username is not available");
         }
         return username;
     }
@@ -63,9 +67,13 @@ public class UserService {
             email = scanner.nextLine();
             if (Validation.checkEmail(email)) {
                 boolean emailExist = userRepository.isEmailExist(email);
+
                 if (!emailExist)
                     break;
-            }
+                else
+                    System.out.println("email exists ");
+            }else
+                System.out.println("invalid email");
         }
         return email;
     }
