@@ -1,15 +1,20 @@
 package entities;
 
+import lombok.*;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 
 public class Brand {
     private int brandId;
     private String brandName;
     private String website;
-    private  String brandDescription;
+    private String brandDescription;
+    private Shareholder[] shareholders;
 
-    public Brand() {
-    }
 
     public Brand(int brandId, String brandName, String website, String brandDescription) {
         this.brandId = brandId;
