@@ -10,7 +10,8 @@ CREATE TABLE brand
 (
     brand_id      SERIAL PRIMARY KEY,
     name    VARCHAR(255) unique ,
-    website VARCHAR(255)
+    website VARCHAR(255),
+    description varchar(255)
 );
 
 CREATE TABLE category
