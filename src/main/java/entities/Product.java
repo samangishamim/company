@@ -2,6 +2,8 @@ package entities;
 
 import lombok.*;
 
+import java.sql.Date;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -11,14 +13,14 @@ public class Product {
 
     private int productId;
     private String productName;
-    private int productDate;
+    private Date productDate;
     private int categoryId;
     private int brandId;
 
 
 
 
-    public Product(String productName, int productDate, int categoryId, int brandId) {
+    public Product(String productName, Date productDate, int categoryId, int brandId) {
         this.productName = productName;
         this.productDate = productDate;
         this.categoryId = categoryId;
