@@ -5,6 +5,7 @@ import entities.Category;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CategoryRepository {
@@ -36,6 +37,15 @@ public class CategoryRepository {
         ps.setInt(1,categoryId );
 
         return ps.executeUpdate();
+
+    }
+    public boolean isCategoryNameExist(String categoryName) throws SQLException {
+        String categoryNameQuery = "select * from category where name=?;";
+        PreparedStatement ps = connection.prepareStatement(categoryNameQuery);
+        ps.setString(1, categoryName);
+
+        ResultSet resultSet = ps.executeQuery();
+        return resultSet.next();
 
     }
 }
