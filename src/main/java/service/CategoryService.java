@@ -21,7 +21,7 @@ public class CategoryService {
         String categoryName = getCategoryNameUnique();
         System.out.println("enter brand description");
         String description = scanner.nextLine();
-        int result = categoryRepository.saveCategory(new Category(categoryName,description));
+        int result = categoryRepository.saveCategory(new Category(categoryName, description));
         if (result != 0) {
             System.out.println("your category has added ");
         } else
@@ -40,5 +40,12 @@ public class CategoryService {
                 System.out.println("username is not available");
         }
         return categoryName;
+    }
+
+    public void listOfCategory() throws SQLException {
+        Category[] categories = categoryRepository.listOfCategory();
+        for (Category category : categories) {
+            System.out.println(category);
+        }
     }
 }
