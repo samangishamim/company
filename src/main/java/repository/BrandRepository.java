@@ -9,13 +9,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BrandRepository {
-    private static Connection connection;
+    private  final  Connection connection ;
 
     public BrandRepository(Connection connection) {
         this.connection = connection;
     }
 
-    public static int saveBrand(Brand brand) throws SQLException {
+    public  int saveBrand(Brand brand) throws SQLException {
         String saveBrandQuery = "insert into brand(name, website, description) values (?,?,?);";
         PreparedStatement ps = connection.prepareStatement(saveBrandQuery);
         ps.setString(1, brand.getBrandName());
@@ -78,10 +78,10 @@ public class BrandRepository {
 
     }
 
-    public boolean isBrandIdExist(String brandId) throws SQLException {
+    public boolean isBrandIdExist(int brandId) throws SQLException {
         String brandNameQuery = "select * from brand where brand_id=?;";
         PreparedStatement ps = connection.prepareStatement(brandNameQuery);
-        ps.setString(1, brandId);
+        ps.setInt(1, brandId);
 
         ResultSet resultSet = ps.executeQuery();
         return resultSet.next();
@@ -177,5 +177,14 @@ public class BrandRepository {
             counter++;
         }
         return counter;
+    }
+    public boolean isBrandWebsiteExist(String brandName) throws SQLException {
+        String brandNameQuery = "select * from brand where website=?;";
+        PreparedStatement ps = connection.prepareStatement(brandNameQuery);
+        ps.setString(1, brandName);
+
+        ResultSet resultSet = ps.executeQuery();
+        return resultSet.next();
+
     }
 }
