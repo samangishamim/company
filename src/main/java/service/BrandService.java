@@ -1,5 +1,7 @@
 package service;
 
+import entities.Brand;
+import entities.User;
 import repository.BrandRepository;
 import utilities.Validation;
 
@@ -7,9 +9,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class BrandService {
-
-
-    private final BrandRepository brandRepository;
+    private   final BrandRepository brandRepository ;
     Scanner scanner=new Scanner(System.in);
 
     public BrandService(BrandRepository brandRepository) {
@@ -22,8 +22,13 @@ public class BrandService {
         String website = getWebsite();
         System.out.println("enter brand description");
         String description = scanner.nextLine();
-
+        int result = BrandRepository.saveBrand(new Brand(brandName,website,description));
+        if (result != 0) {
+            System.out.println("your brand has added ");
+        } else
+            System.out.println("error");
     }
+
     private String getWebsite() {
         String website;
         while (true) {
@@ -49,5 +54,9 @@ public class BrandService {
                 System.out.println("username is not available");
         }
         return brandName;
+    }
+
+    public Brand findBrandById (int brandId) throws SQLException {
+        return brandRepository.load(brandId);
     }
 }
