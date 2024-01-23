@@ -64,7 +64,6 @@ public class BrandService {
         System.out.println("*** delete brand ***");
         boolean brandExist = brandRepository.isBrandIdExist(brandId);
         System.out.println("want to delete this brand: [y / n]");
-        System.out.println(brandExist);
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine().toLowerCase();
         if (input.equals("y")) {
@@ -114,6 +113,13 @@ public class BrandService {
                 System.out.println("invalid website url");
         }
         return website;
+    }
+
+    public void  listOfBrand() throws SQLException {
+        Brand[] brands = brandRepository.listOfBrand();
+        for (Brand brand : brands) {
+            System.out.println(brand);
+        }
     }
 
 }
