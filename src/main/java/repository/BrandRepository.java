@@ -9,13 +9,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BrandRepository {
-    private final Connection connection;
+    private static Connection connection;
 
     public BrandRepository(Connection connection) {
         this.connection = connection;
     }
 
-    public int saveBrand(Brand brand) throws SQLException {
+    public static int saveBrand(Brand brand) throws SQLException {
         String saveBrandQuery = "insert into brand(name, website, description) values (?,?,?);";
         PreparedStatement ps = connection.prepareStatement(saveBrandQuery);
         ps.setString(1, brand.getBrandName());
