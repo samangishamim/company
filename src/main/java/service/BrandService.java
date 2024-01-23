@@ -89,22 +89,32 @@ public class BrandService {
         System.out.println(brand);
         System.out.println("your brand name is: " + brand.getBrandName());
         System.out.println("enter your newest brand name: ");
-        String nameUnique = getBrandNameUnique(brand.getBrandName());
+        String nameUnique = getBrandNameUnique();
         System.out.println("your website url is: " + brand.getWebsite());
-        System.out.println("enter your newest brand name: ");
-        boolean b = Validation.checkWebsite();
+        String website = getCheckWebsitewebsite();
+        System.out.println("enter you brand description: ");
+        String description=scanner.nextLine();
+
+
+        int result = brandRepository.edit(new Brand(nameUnique, website, description));
+        if (result != 0){
+            System.out.println("edit is done");
+        }else
+            System.out.println("error -edit");
     }
-//    private String getBrandUniqueWebsite() throws SQLException {
-//        String websiteBrand;
-//        while (true) {
-//            System.out.println("enter your website url : ");
-//            websiteBrand = scanner.nextLine();
-//            boolean usernameExist = brandRepository
-//            if (!usernameExist)
-//                break;
-//            else
-//                System.out.println("username is not available");
-//        }
-//        return brandName;
-//    }
+
+    private String getCheckWebsitewebsite() {
+        String website;
+        while (true) {
+            System.out.println("enter your newest brand website : ");
+             website = scanner.nextLine();
+            boolean checked = Validation.checkWebsite(website);
+            if (checked)
+                break;
+            else
+                System.out.println("invalid website url");
+        }
+        return website;
+    }
+
 }
