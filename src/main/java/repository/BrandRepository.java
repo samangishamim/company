@@ -117,7 +117,9 @@ public class BrandRepository {
                 ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         ResultSet resultSet = ps.executeQuery();
 
+        int counter = getCounter(resultSet);
         Brand[] brands = new Brand[counter];
+
         resultSet.beforeFirst();
         int k = 0;
         while (resultSet.next()) {
@@ -128,12 +130,32 @@ public class BrandRepository {
 
         }
         ResultSet resultSet1 = getResualtSet(id);
-        int counter1 = 0;
-        while ((resultSet.next())) {
-            counter1++;
-        }
-        Shareholder[] shareholders=new Shareholder[counter1];
+        counter=getCounter(resultSet1);
+        Shareholder[] shareholders = new Shareholder[counter];
 
+        counter=0;
+        resultSet1.beforeFirst();
+        while (resultSet1.next()){
+            int shareholderId=resultSet1.getInt(1);
+            shareholders[counter++]=getShareholder(shareholderId);
+        }
+
+    }
+
+    private Shareholder getShareholder(int shareholderId) throws SQLException {
+        String shareholderQuery="select * from shareholder where shareholder_id=?;";
+        PreparedStatement ps2= connection.prepareStatement(shareholderQuery);
+        ps2.setInt(1,shareholderId);
+
+        ResultSet resultSet3 = ps2.executeQuery();
+        if (resultSet3.next()){
+            int shareholder_Id=resultSet3.getInt(1);
+            String shareholderName = resultSet3.getString(2);
+            int phoneNumber = resultSet3.getInt(3);
+            int nationalCode = resultSet3.getInt(4);
+            return  new Shareholder(shareholderId,shareholderName,nationalCode,phoneNumber);
+        }
+        return null;
     }
 
 
@@ -146,7 +168,8 @@ public class BrandRepository {
         ResultSet resultSet2 = ps.executeQuery();
         return resultSet2;
     }
-    private  int getCounter(ResultSet resultSet) throws SQLException {
+
+    private int getCounter(ResultSet resultSet) throws SQLException {
         int counter = 0;
         while ((resultSet.next())) {
             counter++;
