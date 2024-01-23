@@ -9,8 +9,8 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class BrandService {
-    private   final BrandRepository brandRepository ;
-    Scanner scanner=new Scanner(System.in);
+    private final BrandRepository brandRepository;
+    Scanner scanner = new Scanner(System.in);
 
     public BrandService(BrandRepository brandRepository) {
         this.brandRepository = brandRepository;
@@ -22,7 +22,7 @@ public class BrandService {
         String website = getWebsite();
         System.out.println("enter brand description");
         String description = scanner.nextLine();
-        int result = BrandRepository.saveBrand(new Brand(brandName,website,description));
+        int result = BrandRepository.saveBrand(new Brand(brandName, website, description));
         if (result != 0) {
             System.out.println("your brand has added ");
         } else
@@ -42,6 +42,7 @@ public class BrandService {
         }
         return website;
     }
+
     private String getBrandNameUnique() throws SQLException {
         String brandName;
         while (true) {
@@ -56,7 +57,24 @@ public class BrandService {
         return brandName;
     }
 
-    public Brand findBrandById (int brandId) throws SQLException {
+    public Brand findBrandById(int brandId) throws SQLException {
         return brandRepository.load(brandId);
+    }
+
+    public void deleteBrand(int brandId) throws SQLException {
+        System.out.println("*** delete brand ***");
+        Brand brand = findBrandById(brandId);
+        System.out.println("want to delete this brand: [yes or no]");
+        System.out.println(brand);
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine().toLowerCase();
+        if (input.equals("yes")) {
+            brandRepository.delete(brandId);
+            System.out.println("Brand deleted successfully.");
+        } else if (input.equals("no")) {
+            System.out.println("Brand not deleted.");
+        } else {
+            System.out.println("Invalid input. Please enter 'yes' or 'no'.");
+        }
     }
 }
