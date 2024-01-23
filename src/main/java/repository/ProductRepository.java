@@ -34,4 +34,12 @@ public class ProductRepository {
 
         return ps.executeUpdate();
     }
+    public int deleteProduct (int productId) throws SQLException {
+        String deleteProductQuery = "delete from product where product_id=?;";
+        PreparedStatement ps = connection.prepareStatement(deleteProductQuery);
+        ps.setInt(1, productId);
+
+        return ps.executeUpdate();
+
+    }
 }
