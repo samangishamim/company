@@ -16,10 +16,12 @@ public class BrandService {
         this.brandRepository = brandRepository;
     }
 
-    public void addBrand(){
+    public void addBrand() throws SQLException {
         System.out.println("*** add brand ***");
-        System.out.println("enter your brand name:");
-        String brandName = scanner.nextLine();
+        String brandName = getBrandNameUnique();
+        String website = getWebsite();
+        System.out.println("enter brand description");
+        String description = scanner.nextLine();
 
     }
     private String getWebsite() {
