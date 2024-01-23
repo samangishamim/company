@@ -30,4 +30,12 @@ public class CategoryRepository {
 
         return ps.executeUpdate();
     }
+    public int deleteCategory(int categoryId) throws SQLException {
+        String deleteCategoryQuery = "delete from category where category_id=?;";
+        PreparedStatement ps = connection.prepareStatement(deleteCategoryQuery);
+        ps.setInt(1,categoryId );
+
+        return ps.executeUpdate();
+
+    }
 }
