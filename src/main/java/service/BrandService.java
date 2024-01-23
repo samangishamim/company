@@ -1,7 +1,6 @@
 package service;
 
 import entities.Brand;
-import entities.User;
 import repository.BrandRepository;
 import utilities.Validation;
 
@@ -61,22 +60,6 @@ public class BrandService {
         return brandRepository.load(brandId);
     }
 
-    public void deleteBrand(int brandId) throws SQLException {
-        System.out.println("*** delete brand ***");
-        Brand brand = findBrandById(brandId);
-        System.out.println("want to delete this brand: [yes or no]");
-        System.out.println(brand);
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine().toLowerCase();
-        if (input.equals("yes")) {
-            brandRepository.delete(brandId);
-            System.out.println("Brand deleted successfully.");
-        } else if (input.equals("no")) {
-            System.out.println("Brand not deleted.");
-        } else {
-            System.out.println("Invalid input. Please enter 'yes' or 'no'.");
-        }
-    }
 //    public void deleteBrand( int brandId) throws SQLException {
 //        System.out.println("*** delete brand ***");
 //        boolean brandExist=brandRepository.isBrandIdExist(String.valueOf(brandId));
