@@ -17,7 +17,7 @@ public class ProductRepository {
         String savePrandQuery = "insert into product(name, create_date, category_id, brand_id) values (?,?,?,?);";
         PreparedStatement ps = connection.prepareStatement(savePrandQuery);
         ps.setString(1,product.getProductName() );
-        ps.setInt(2,product.getProductDate());
+        ps.setDate(2,product.getProductDate());
         ps.setInt(3, product.getCategoryId());
         ps.setInt(4,product.getBrandId());
 
@@ -28,7 +28,7 @@ public class ProductRepository {
         String editProductQuery = "update product set name=?,create_date=?,category_id=?,brand_id=? where category_id=?;";
         PreparedStatement ps = connection.prepareStatement(editProductQuery);
         ps.setString(1, product.getProductName());
-        ps.setInt(2,product.getProductDate());
+        ps.setDate(2,product.getProductDate());
         ps.setInt(3, product.getCategoryId());
         ps.setInt(4,product.getBrandId());
 
