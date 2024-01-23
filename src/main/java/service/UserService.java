@@ -77,7 +77,7 @@ public class UserService {
         }
         return email;
     }
-    public void signIn () throws SQLException {
+    public boolean signIn () throws SQLException {
         System.out.println("***** sign in *****");
         System.out.println("enter your username: ");
         String username = scanner.nextLine();
@@ -88,5 +88,6 @@ public class UserService {
             System.out.println("welcome");
         else
             System.out.println("username or password is wrong");
+        return signedIn;
     }
 }
