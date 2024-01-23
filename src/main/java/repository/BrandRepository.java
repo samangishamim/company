@@ -109,4 +109,38 @@ public class BrandRepository {
         }
         return brands;
     }
+
+    public Brand[] listOfBrandShareholder(int id) throws SQLException {
+        String brandQuery = "select * from brand;";
+        PreparedStatement ps = connection.prepareStatement(brandQuery,
+                ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        ResultSet resultSet = ps.executeQuery();
+        int counter = 0;
+        while ((resultSet.next())) {
+            counter++;
+        }
+        Brand[] brands = new Brand[counter];
+        resultSet.beforeFirst();
+        int k = 0;
+        while (resultSet.next()) {
+            int brandId = resultSet.getInt(1);
+            String brandName = resultSet.getString(2);
+            String website = resultSet.getString(3);
+            String description = resultSet.getString(4);
+
+        }
+
+
+    }
+
+
+    private  ResultSet getResualtSet(int id) throws SQLException {
+        String shareholderQuery = "select shareholder_id from shareholder_brand where  brand_id=?;";
+        PreparedStatement ps = connection.prepareStatement(shareholderQuery,
+                ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        ps.setInt(1, id);
+
+        ResultSet resultSet2 = ps.executeQuery();
+        return resultSet2;
+    }
 }
