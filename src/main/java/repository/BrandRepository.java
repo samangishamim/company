@@ -128,18 +128,20 @@ public class BrandRepository {
             String website = resultSet.getString(3);
             String description = resultSet.getString(4);
 
-        }
-        ResultSet resultSet1 = getResualtSet(id);
-        counter=getCounter(resultSet1);
-        Shareholder[] shareholders = new Shareholder[counter];
 
-        counter=0;
-        resultSet1.beforeFirst();
-        while (resultSet1.next()){
-            int shareholderId=resultSet1.getInt(1);
-            shareholders[counter++]=getShareholder(shareholderId);
-        }
+            ResultSet resultSet1 = getResualtSet(id);
+            counter = getCounter(resultSet1);
+            Shareholder[] shareholders = new Shareholder[counter];
 
+            counter = 0;
+            resultSet1.beforeFirst();
+            while (resultSet1.next()) {
+                int shareholderId = resultSet1.getInt(1);
+                shareholders[counter++] = getShareholder(shareholderId);
+            }
+            brands[k++] = new Brand(brandId,brandName,website,description);
+        }
+        return brands;
     }
 
     private Shareholder getShareholder(int shareholderId) throws SQLException {
