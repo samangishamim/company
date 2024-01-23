@@ -50,10 +50,20 @@ public class BrandRepository {
         String editBrand = "update brand set name=?,website=?,description=? where brand_id=?;";
         PreparedStatement ps = connection.prepareStatement(editBrand);
         ps.setString(1, brand.getBrandName());
-        ps.setString(2,brand.getWebsite());
-        ps.setString(3,brand.getBrandDescription());
-        ps.setInt(4,brand.getBrandId());
+        ps.setString(2, brand.getWebsite());
+        ps.setString(3, brand.getBrandDescription());
+        ps.setInt(4, brand.getBrandId());
 
-       return ps.executeUpdate();
+        return ps.executeUpdate();
+    }
+
+
+    public int delete(int brandId) throws SQLException {
+        String deleteQuery = "delete from brand where brand_id=?;";
+        PreparedStatement ps = connection.prepareStatement(deleteQuery);
+        ps.setInt(1, brandId);
+
+        return ps.executeUpdate();
+
     }
 }
