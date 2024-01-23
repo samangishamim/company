@@ -45,7 +45,7 @@ public class BrandService {
     private String getBrandNameUnique() throws SQLException {
         String brandName;
         while (true) {
-            System.out.println("enter your website name : ");
+            System.out.println("enter your brand name : ");
             brandName = scanner.nextLine();
             boolean usernameExist = brandRepository.isBrandNameExist(brandName);
             if (!usernameExist)
@@ -88,7 +88,6 @@ public class BrandService {
         }
         System.out.println(brand);
         System.out.println("your brand name is: " + brand.getBrandName());
-        System.out.println("enter your newest brand name: ");
         String nameUnique = getBrandNameUnique();
         System.out.println("your website url is: " + brand.getWebsite());
         String website = getCheckWebsitewebsite();
@@ -96,7 +95,7 @@ public class BrandService {
         String description=scanner.nextLine();
 
 
-        int result = brandRepository.edit(new Brand(nameUnique, website, description));
+        int result = brandRepository.edit(new Brand(brandId,nameUnique, website, description));
         if (result != 0){
             System.out.println("edit is done");
         }else
