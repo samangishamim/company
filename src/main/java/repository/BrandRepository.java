@@ -66,4 +66,14 @@ public class BrandRepository {
         return ps.executeUpdate();
 
     }
+
+    public boolean isBrandNameExist (String brandName) throws SQLException {
+        String brandNameQuery="select * from brand where name=?;";
+        PreparedStatement ps= connection.prepareStatement(brandNameQuery);
+        ps.setString(1,brandName);
+
+        ResultSet resultSet = ps.executeQuery();
+        return resultSet.next();
+
+    }
 }
