@@ -22,4 +22,12 @@ public class CategoryRepository {
         int result = ps.executeUpdate();
         return result;
     }
+    public int editCategory (Category category) throws SQLException {
+        String editCategoryQuery = "update category set name=?,description=? where category_id=?;";
+        PreparedStatement ps = connection.prepareStatement(editCategoryQuery);
+        ps.setString(1, category.getCategoryName());
+        ps.setString(2, category.getCategoryDescription());
+
+        return ps.executeUpdate();
+    }
 }
