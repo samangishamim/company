@@ -76,4 +76,12 @@ public class BrandService {
 //            System.out.println("Invalid input. Please enter 'yes' or 'no'.");
 //        }
 //    }
+
+
+    public void editBrand(int brandId) throws SQLException {
+        Brand brand=brandRepository.load(brandId);
+        if (brand == null){
+            return;
+        }
+    }
 }
