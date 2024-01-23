@@ -8,8 +8,8 @@ import java.sql.Connection;
 
 public class ApplicationContext {
     private static final Connection CONNECTION;
-//    private static final BrandRepository BRAND_REPOSITORY;
-//    private static final BrandService BRAND_SERVICE;
+    private static final BrandRepository BRAND_REPOSITORY;
+    private static final BrandService BRAND_SERVICE;
 //    private static final CategoryRepository CATEGORY_REPOSITORY;
 //    private static final CategoryService CATEGORY_SERVICE;
 //
@@ -25,8 +25,8 @@ public class ApplicationContext {
 
     static {
         CONNECTION = JdbcConnection.getConnection();
-//        BRAND_REPOSITORY = new BrandRepository(CONNECTION);
-//        BRAND_SERVICE = new BrandService(BRAND_REPOSITORY);
+        BRAND_REPOSITORY = new BrandRepository(CONNECTION);
+        BRAND_SERVICE = new BrandService(BRAND_REPOSITORY);
 //
 //        CATEGORY_REPOSITORY = new CategoryRepository(CONNECTION);
 //        CATEGORY_SERVICE = new CategoryService(CATEGORY_REPOSITORY);
@@ -45,9 +45,9 @@ public class ApplicationContext {
         USER_SERVICE=new UserService(USER_REPOSITORY);
     }
 
-//    public static BrandService getBrandService() {
-//        return BRAND_SERVICE;
-//    }
+    public static BrandService getBrandService() {
+        return BRAND_SERVICE;
+    }
 //
 //    public static CategoryService getCategoryService() {
 //        return CATEGORY_SERVICE;
