@@ -14,7 +14,8 @@ public class CategoryRepository {
     public CategoryRepository(Connection connection) {
         this.connection = connection;
     }
-    public int saveCategory (Category category) throws SQLException {
+
+    public int saveCategory(Category category) throws SQLException {
         String saveCategoryQuery = "insert into category(name,description)values (?,?);";
         PreparedStatement ps = connection.prepareStatement(saveCategoryQuery);
         ps.setString(1, category.getCategoryName());
@@ -23,7 +24,8 @@ public class CategoryRepository {
         int result = ps.executeUpdate();
         return result;
     }
-    public int editCategory (Category category) throws SQLException {
+
+    public int editCategory(Category category) throws SQLException {
         String editCategoryQuery = "update category set name=?,description=? where category_id=?;";
         PreparedStatement ps = connection.prepareStatement(editCategoryQuery);
         ps.setString(1, category.getCategoryName());
@@ -31,14 +33,16 @@ public class CategoryRepository {
 
         return ps.executeUpdate();
     }
+
     public int deleteCategory(int categoryId) throws SQLException {
         String deleteCategoryQuery = "delete from category where category_id=?;";
         PreparedStatement ps = connection.prepareStatement(deleteCategoryQuery);
-        ps.setInt(1,categoryId );
+        ps.setInt(1, categoryId);
 
         return ps.executeUpdate();
 
     }
+
     public boolean isCategoryNameExist(String categoryName) throws SQLException {
         String categoryNameQuery = "select * from category where name=?;";
         PreparedStatement ps = connection.prepareStatement(categoryNameQuery);
@@ -47,5 +51,27 @@ public class CategoryRepository {
         ResultSet resultSet = ps.executeQuery();
         return resultSet.next();
 
+    }
+
+    public Category[] listOfCategory() throws SQLException {
+        String listCategory = "select * from category ;";
+        PreparedStatement ps= connection.prepareStatement(listCategory,
+                ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        ResultSet resultSet = ps.executeQuery();
+        int counter=0;
+        while (resultSet.next()) counter++;
+        Category[] categories=new Category[counter];
+        counter=0;
+        resultSet.beforeFirst();
+        while (resultSet.next()){
+            int categoryId = resultSet.getInt(1);
+            String categoryName = resultSet.getString(2);
+            String categoryDescription = resultSet.getString(3);
+
+
+            categories[counter++]=new Category(categoryId,categoryName,categoryDescription);
+
+        }
+        return categories;
     }
 }
