@@ -24,4 +24,14 @@ public class ProductRepository {
         int result = ps.executeUpdate();
         return result;
     }
+    public int editProduct(Product product) throws SQLException {
+        String editProductQuery = "update product set name=?,create_date=?,category_id=?,brand_id=? where category_id=?;";
+        PreparedStatement ps = connection.prepareStatement(editProductQuery);
+        ps.setString(1, product.getProductName());
+        ps.setInt(2,product.getProductDate());
+        ps.setInt(3, product.getCategoryId());
+        ps.setInt(4,product.getBrandId());
+
+        return ps.executeUpdate();
+    }
 }
