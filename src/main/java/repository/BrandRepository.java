@@ -67,23 +67,46 @@ public class BrandRepository {
 
     }
 
-    public boolean isBrandNameExist (String brandName) throws SQLException {
-        String brandNameQuery="select * from brand where name=?;";
-        PreparedStatement ps= connection.prepareStatement(brandNameQuery);
-        ps.setString(1,brandName);
+    public boolean isBrandNameExist(String brandName) throws SQLException {
+        String brandNameQuery = "select * from brand where name=?;";
+        PreparedStatement ps = connection.prepareStatement(brandNameQuery);
+        ps.setString(1, brandName);
 
         ResultSet resultSet = ps.executeQuery();
         return resultSet.next();
 
     }
 
-    public boolean isBrandIdExist (String brandId) throws SQLException {
-        String brandNameQuery="select * from brand where brand_id=?;";
-        PreparedStatement ps= connection.prepareStatement(brandNameQuery);
-        ps.setString(1,brandId);
+    public boolean isBrandIdExist(String brandId) throws SQLException {
+        String brandNameQuery = "select * from brand where brand_id=?;";
+        PreparedStatement ps = connection.prepareStatement(brandNameQuery);
+        ps.setString(1, brandId);
 
         ResultSet resultSet = ps.executeQuery();
         return resultSet.next();
 
+    }
+
+    public Brand[] listOfBrand() throws SQLException {
+        String brandQuery = "select * from brand;";
+        PreparedStatement ps = connection.prepareStatement(brandQuery,
+                ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        ResultSet resultSet = ps.executeQuery();
+        int counter = 0;
+        while ((resultSet.next())) {
+            counter++;
+        }
+        Brand[] brands = new Brand[counter];
+        resultSet.beforeFirst();
+        int k = 0;
+        while (resultSet.next()) {
+            int brandId = resultSet.getInt(1);
+            String brandName = resultSet.getString(2);
+            String website = resultSet.getString(3);
+            String description = resultSet.getString(4);
+
+            brands[k++] = new Brand(brandId, brandName, website, description);
+        }
+        return brands;
     }
 }
