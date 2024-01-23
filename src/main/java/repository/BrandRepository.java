@@ -1,6 +1,7 @@
 package repository;
 
 import entities.Brand;
+import entities.Shareholder;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -115,10 +116,7 @@ public class BrandRepository {
         PreparedStatement ps = connection.prepareStatement(brandQuery,
                 ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         ResultSet resultSet = ps.executeQuery();
-        int counter = 0;
-        while ((resultSet.next())) {
-            counter++;
-        }
+
         Brand[] brands = new Brand[counter];
         resultSet.beforeFirst();
         int k = 0;
@@ -129,12 +127,17 @@ public class BrandRepository {
             String description = resultSet.getString(4);
 
         }
-
+        ResultSet resultSet1 = getResualtSet(id);
+        int counter1 = 0;
+        while ((resultSet.next())) {
+            counter1++;
+        }
+        Shareholder[] shareholders=new Shareholder[counter1];
 
     }
 
 
-    private  ResultSet getResualtSet(int id) throws SQLException {
+    private ResultSet getResualtSet(int id) throws SQLException {
         String shareholderQuery = "select shareholder_id from shareholder_brand where  brand_id=?;";
         PreparedStatement ps = connection.prepareStatement(shareholderQuery,
                 ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -142,5 +145,12 @@ public class BrandRepository {
 
         ResultSet resultSet2 = ps.executeQuery();
         return resultSet2;
+    }
+    private  int getCounter(ResultSet resultSet) throws SQLException {
+        int counter = 0;
+        while ((resultSet.next())) {
+            counter++;
+        }
+        return counter;
     }
 }
