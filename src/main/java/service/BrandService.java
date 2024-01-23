@@ -21,7 +21,7 @@ public class BrandService {
         String website = getWebsite();
         System.out.println("enter brand description");
         String description = scanner.nextLine();
-        int result = BrandRepository.saveBrand(new Brand(brandName, website, description));
+        int result = brandRepository.saveBrand(new Brand(brandName, website, description));
         if (result != 0) {
             System.out.println("your brand has added ");
         } else
@@ -60,28 +60,51 @@ public class BrandService {
         return brandRepository.load(brandId);
     }
 
-//    public void deleteBrand( int brandId) throws SQLException {
-//        System.out.println("*** delete brand ***");
-//        boolean brandExist=brandRepository.isBrandIdExist(String.valueOf(brandId));
-//        System.out.println("want to delete this brand: [yes or no]");
-//        System.out.println(brandExist);
-//        Scanner scanner = new Scanner(System.in);
-//        String input = scanner.nextLine().toLowerCase();
-//        if (input.equals("yes")) {
-//            int delete = brandRepository.delete(brandId);
-//            System.out.println("Brand deleted successfully.");
-//        } else if (input.equals("no")) {
-//            System.out.println("Brand not deleted.");
-//        } else {
-//            System.out.println("Invalid input. Please enter 'yes' or 'no'.");
-//        }
-//    }
+    public void deleteBrand(int brandId) throws SQLException {
+        System.out.println("*** delete brand ***");
+        boolean brandExist = brandRepository.isBrandIdExist(brandId);
+        System.out.println("want to delete this brand: [y / n]");
+        System.out.println(brandExist);
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine().toLowerCase();
+        if (input.equals("y")) {
+            int delete = brandRepository.delete(brandId);
+            if (delete != 0)
+                System.out.println("Brand deleted successfully.");
+            else
+                System.out.println("error");
+        } else if (input.equals("n")) {
+            System.out.println("Brand not deleted.");
+        } else {
+            System.out.println("Invalid input. Please enter 'yes' or 'no'.");
+        }
+    }
 
 
     public void editBrand(int brandId) throws SQLException {
-        Brand brand=brandRepository.load(brandId);
-        if (brand == null){
+        Brand brand = brandRepository.load(brandId);
+        if (brand == null) {
             return;
         }
+        System.out.println(brand);
+        System.out.println("your brand name is: " + brand.getBrandName());
+        System.out.println("enter your newest brand name: ");
+        String nameUnique = getBrandNameUnique(brand.getBrandName());
+        System.out.println("your website url is: " + brand.getWebsite());
+        System.out.println("enter your newest brand name: ");
+        boolean b = Validation.checkWebsite();
     }
+//    private String getBrandUniqueWebsite() throws SQLException {
+//        String websiteBrand;
+//        while (true) {
+//            System.out.println("enter your website url : ");
+//            websiteBrand = scanner.nextLine();
+//            boolean usernameExist = brandRepository
+//            if (!usernameExist)
+//                break;
+//            else
+//                System.out.println("username is not available");
+//        }
+//        return brandName;
+//    }
 }
