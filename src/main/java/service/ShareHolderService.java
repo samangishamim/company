@@ -12,66 +12,57 @@ import java.util.Scanner;
 
 public class ShareHolderService {
     private final ShareHolderRepository shareHolderRepository;
-    Scanner scanner=new Scanner(System.in);
-    public ShareHolderService( ShareHolderRepository shareHolderRepository1) {
+    Scanner scanner = new Scanner(System.in);
+
+    public ShareHolderService(ShareHolderRepository shareHolderRepository1) {
         this.shareHolderRepository = shareHolderRepository1;
     }
-    public void addShareholder() throws SQLException {
-        System.out.println("*** add shareholder ***");
-        System.out.println("shareholder enter your name : ");
-        String shareholderName = scanner.nextLine();
-        System.out.println("enter your national code: ");
-        int nationalCode = getUniqueNationalCode();
-        scanner.nextLine();
-        System.out.println("enter your phonenumber: ");
-        int phoneNumber = getUniquephonenumber();
-        scanner.nextLine();
 
+    public void addShareholder() {
+        try {
+            System.out.println("*** add shareholder ***");
+            System.out.println("shareholder enter your name : ");
+            String shareholderName = scanner.nextLine();
+            int nationalCode = getUniqueNationalCode();
 
-        int result = shareHolderRepository.saveShareholder(new Shareholder(shareholderName,nationalCode,phoneNumber));
-        if (result != 0) {
-            System.out.println("new shareholder  has been added ");
-        } else
-            System.out.println("error");
-    }
+            String phoneNumber = getPhoneNumber();
 
-    public int getUniquephonenumber() throws SQLException {
-        int phoneNumber;
-        while (true) {
-            System.out.println("enter your phone number: ");
-            phoneNumber = scanner.nextInt();
-            scanner.nextLine();
-            if (Validation.checkPhoneNumber(String.valueOf(phoneNumber))) {
-                boolean phoneNumberExist = shareHolderRepository.isPhoneNumberExist(String.valueOf(phoneNumber));
-
-                if (!phoneNumberExist)
-                    break;
-                else
-                    System.out.println("phone number  exists ");
-            }else
-                System.out.println("invalid phone number");
-        }
-        return phoneNumber;
-    }
-
-    public int getUniqueNationalCode() throws SQLException {
-        int nationalCode;
-        while (true) {
-            System.out.println("enter your email: ");
-            nationalCode = scanner.nextInt();
-            if (Validation.validateMelliCode(String.valueOf(nationalCode))) {
-                boolean nationalCodeExist = shareHolderRepository.isNationalCodeExist(String.valueOf(nationalCode));
-
-                if (!nationalCodeExist) {
-                    break;
-                } else {
-                    System.out.println("National code already exists");
-                }
+            int result = shareHolderRepository.saveShareholder(new Shareholder(shareholderName, nationalCode, phoneNumber));
+            if (result != 0) {
+                System.out.println("New shareholder has been added");
             } else {
-                System.out.println("Invalid national code");
+                System.out.println("Error adding shareholder");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public String getPhoneNumber() {
+        while (true) {
+            System.out.println("Enter your phone number: ");
+            String input = scanner.nextLine();
+            if (Validation.checkPhoneNumber(input)) {
+                return input;
+            } else {
+                System.out.println("Invalid phone number. Please try again.");
             }
         }
-        return nationalCode;
     }
 
+    public int getUniqueNationalCode() {
+        while (true) {
+            try {
+                System.out.println("Enter your national code: ");
+                String input = scanner.nextLine();
+                if (Validation.isValidNationalCode(input)) {
+                    return Integer.parseInt(input);
+                } else {
+                    System.out.println("Invalid national code. Please try again.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid national code.");
+            }
+        }
+    }
 }
