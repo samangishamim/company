@@ -132,6 +132,7 @@ public class Menu {
                     System.out.println("enter the brand id to delete ");
                     int categoryId = scanner.nextInt();
                     scanner.nextLine();
+                    productService.deletByCategoryId(categoryId);
                     categoryService.deletCat(categoryId);
                 }
                 case 0 -> {
@@ -141,6 +142,42 @@ public class Menu {
             }
         }
     }
+    public void productMenuMenu() throws SQLException {
+        int choice = -1;
+        while (choice != 0) {
+            System.out.println("***** product menu *****");
+            System.out.println("1-add ");
+            System.out.println("2-edit ");
+            System.out.println("3-delete ");
+            System.out.println("0-exit");
+
+
+            choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1 ->productService.addProduct();
+                case 2 -> {
+                    System.out.println("enter the product id to edit ");
+                    int productId = scanner.nextInt();
+                    scanner.nextLine();
+                    productService.editProduct(productId);
+                }
+                case 3 -> {
+                    System.out.println("enter the product id to delete ");
+                    int productId = scanner.nextInt();
+                    scanner.nextLine();
+                    productService.deletProduct(productId);
+
+                }
+                case 0 -> {
+                    System.out.println("exit from brand Menu ");
+                    break;
+                }
+            }
+        }
+    }
+
 
 
 }
