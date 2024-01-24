@@ -1,8 +1,10 @@
 package service;
 
+import entities.Brand;
 import entities.Product;
 import repository.ProductRepository;
 import utilities.ApplicationContext;
+import utilities.Validation;
 
 import java.sql.SQLException;
 import java.sql.Date;
@@ -40,5 +42,41 @@ public class ProductService {
             System.out.println("product is added");
         } else
             System.out.println("product is not added");
+    }
+
+    public void editProduct(int productId) throws SQLException {
+        Product product = productRepository.loadProduct(productId);
+        if (product == null) {
+            return;
+        }
+        System.out.println(product);
+        System.out.println("your product name is: " + product.getProductName());
+        String productName = scanner.nextLine();
+        System.out.println("your product date is: " + product.getProductDate());
+        Date productDate = scanner.nextInt();
+        System.out.println("your category id is: " + product.getCategoryId());
+        int productCategoryId = scanner.nextInt();
+        System.out.println("your brand id is: " + product.getBrandId());
+        int productBrandId = scanner.nextInt();
+
+
+        int result = productRepository.editProduct(new Product(productId, productName, productDate, productCategoryId, productBrandId));
+        if (result != 0) {
+            System.out.println("edit is done");
+        } else
+            System.out.println("error -edit");
+    }
+
+    private Date getValidDate() {
+        Date date = Date.valueOf("");
+        while (true) {
+            System.out.println("Enter the date (in the format MM/DD/YYYY):");
+            date = Date.valueOf(scanner.nextLine());
+            if (Validation.checkValidDate(date)) {
+                break;
+            } else
+                System.out.println("invalid date");
+        }
+        return date;
     }
 }
