@@ -11,7 +11,32 @@ public class Validation {
     public static final String EMAIL_PATTERN = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
     public static final String WEBSITE_PATTERN = "^(https?://)?([\\w-]+\\.)+[\\w-]+(/[\\w-./?%&=]*)?$";
 
-    public static final String PHONE_NUMBER_PATTERN = "^\\d{10}$";
+    public static final String PHONE_NUMBER_PATTERN = "^\\d{11}$";
+
+
+
+    public static boolean isValidNationalCode(String input) {
+            if (input.length() != 10)
+                return false;
+
+            if (!input.matches("\\d+"))
+                return false;
+
+            int[] array = new int[10];
+            for (int i = 0; i < 10; i++)
+                array[i] = Integer.parseInt(input.substring(i, i + 1));
+
+            int num = array[0] * 10 + array[1] * 9 + array[2] * 8 + array[3] * 7 + array[4] * 6 + array[5] * 5 + array[6] * 4 + array[7] * 3 + array[8] * 2;
+            int remain = num % 11;
+            int control = 11 - remain;
+
+            if (control == 11)
+                control = 1;
+            if (control == 10)
+                control = 0;
+
+            return control == array[9];
+        }
 
     public static boolean checkEmail(String email) {
         Pattern pattern = Pattern.compile(EMAIL_PATTERN);
@@ -34,45 +59,12 @@ public class Validation {
 
     public static boolean checkPhoneNumber(String phoneNumber) {
         Pattern pattern = Pattern.compile(PHONE_NUMBER_PATTERN);
+        System.out.println(pattern);
         Matcher matcher = pattern.matcher(phoneNumber);
+        System.out.println(matcher.matches());
         return matcher.matches();
     }
-    public static boolean validateMelliCode(String melliCode) {
 
-        String[] identicalDigits = {"0000000000", "1111111111", "2222222222", "3333333333", "4444444444", "5555555555", "6666666666", "7777777777", "8888888888", "9999999999"};
 
-        if (melliCode.trim().isEmpty()) {
-            System.out.println("National Code is empty");
-            return false; // National Code is empty
-        } else if (melliCode.length() != 10) {
-            System.out.println("National Code must be exactly 10 digits");
-            return false; // National Code is less or more than 10 digits
-        } else if (Arrays.asList(identicalDigits).contains(melliCode)) {
-            System.out.println("MelliCode is not valid (Fake MelliCode)");
-            return false; // Fake National Code
-        } else {
-            int sum = 0;
 
-            for (int i = 0; i < 9; i++) {
-                sum += Character.getNumericValue(melliCode.charAt(i)) * (10 - i);
-            }
-
-            int lastDigit;
-            int divideRemaining = sum % 11;
-
-            if (divideRemaining < 2) {
-                lastDigit = divideRemaining;
-            } else {
-                lastDigit = 11 - (divideRemaining);
-            }
-
-            if (Character.getNumericValue(melliCode.charAt(9)) == lastDigit) {
-                System.out.println("MelliCode is valid");
-                return true;
-            } else {
-                System.out.println("MelliCode is not valid");
-                return false; // Invalid MelliCode
-            }
-        }
-    }
 }
