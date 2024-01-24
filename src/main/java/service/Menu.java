@@ -14,6 +14,8 @@ public class Menu {
     ShareholderBrandService shareholderBrandService = ApplicationContext.getShareholderBrandService();
     CategoryService categoryService = ApplicationContext.getCategoryService();
 
+    ShareHolderService shareHolderService = ApplicationContext.getShareHolderService();
+
     public void menu() throws SQLException {
         int choice = -1;
         while (choice != 0) {
@@ -121,7 +123,7 @@ public class Menu {
             scanner.nextLine();
 
             switch (choice) {
-                case 1 ->categoryService.addCategory();
+                case 1 -> categoryService.addCategory();
                 case 2 -> {
                     System.out.println("enter the brand id to edit ");
                     int categoryId = scanner.nextInt();
@@ -136,13 +138,14 @@ public class Menu {
                     categoryService.deletCat(categoryId);
                 }
                 case 0 -> {
-                    System.out.println("exit from brand Menu ");
+                    System.out.println("exit from category Menu ");
                     break;
                 }
             }
         }
     }
-    public void productMenuMenu() throws SQLException {
+
+    public void productMenu() throws SQLException {
         int choice = -1;
         while (choice != 0) {
             System.out.println("***** product menu *****");
@@ -156,7 +159,7 @@ public class Menu {
             scanner.nextLine();
 
             switch (choice) {
-                case 1 ->productService.addProduct();
+                case 1 -> productService.addProduct();
                 case 2 -> {
                     System.out.println("enter the product id to edit ");
                     int productId = scanner.nextInt();
@@ -171,7 +174,7 @@ public class Menu {
 
                 }
                 case 0 -> {
-                    System.out.println("exit from brand Menu ");
+                    System.out.println("exit from product Menu ");
                     break;
                 }
             }
@@ -179,5 +182,73 @@ public class Menu {
     }
 
 
+    public void shareholderMenu() throws SQLException {
+        int choice = -1;
+        while (choice != 0) {
+            System.out.println("***** shareholder MENU *****");
+            System.out.println("1-add ");
+            System.out.println("2-edit ");
+            System.out.println("3-delete ");
+            System.out.println("0-exit");
+
+
+            choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1 -> shareHolderService.addShareholder();
+                case 2 -> {
+                    System.out.println("enter the shareholder id to edit ");
+                    int shareholderId = scanner.nextInt();
+                    scanner.nextLine();
+                    shareHolderService.editShareholder(shareholderId);
+                }
+                case 3 -> {
+                    System.out.println("enter the shareholder id to delete ");
+                    int shareholderId = scanner.nextInt();
+                    scanner.nextLine();
+                    shareholderBrandService.deleteByShareholderId(shareholderId);
+                    shareHolderService.deletShareholder(shareholderId);
+                }
+                case 0 -> {
+                    System.out.println("exit from shareholdare Menu ");
+                    break;
+                }
+            }
+        }
+
+    }
+
+
+    public void shareholderBrandMenu() throws SQLException {
+        int choice = -1;
+        while (choice != 0) {
+            System.out.println("***** shareholder brand  MENU *****");
+            System.out.println("1-add ");
+            System.out.println("2-delete ");
+            System.out.println("0-exit");
+
+
+            choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1 -> shareholderBrandService.addShareholderBrand();
+                case 2 -> {
+                    System.out.println("enter the shareholder-brand id to delete ");
+                    int shareholderId = scanner.nextInt();
+                    scanner.nextLine();
+                    shareholderBrandService.deleteByBrandId(shareholderId);
+                    shareholderBrandService.deleteByShareholderId(shareholderId);
+                    shareholderBrandService.deleteShareholderBrand(shareholderId);
+
+                }
+                case 0 -> {
+                    System.out.println("exit from shareholder-brand Menu ");
+                    break;
+                }
+            }
+        }
+    }
 
 }
