@@ -154,7 +154,7 @@ public class BrandRepository {
             int shareholder_Id=resultSet3.getInt(1);
             String shareholderName = resultSet3.getString(2);
             String phoneNumber = resultSet3.getString(3);
-            int nationalCode = resultSet3.getInt(4);
+            String nationalCode = resultSet3.getString(4);
             return  new Shareholder(shareholderId,shareholderName,nationalCode,phoneNumber);
         }
         return null;
