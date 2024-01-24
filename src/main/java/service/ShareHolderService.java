@@ -20,19 +20,19 @@ public class ShareHolderService {
 
     public void addShareholder() throws SQLException {
 
-            System.out.println("*** add shareholder ***");
-            System.out.println("shareholder enter your name : ");
-            String shareholderName = scanner.nextLine();
-            String nationalCode = getUniqueNationalCode();
+        System.out.println("*** add shareholder ***");
+        System.out.println("shareholder enter your name : ");
+        String shareholderName = scanner.nextLine();
+        String nationalCode = getUniqueNationalCode();
 
-            String phoneNumber = getPhoneNumber();
+        String phoneNumber = getPhoneNumber();
 
-            int result = shareHolderRepository.saveShareholder(new Shareholder(shareholderName, nationalCode, phoneNumber));
-            if (result != 0) {
-                System.out.println("New shareholder has been added");
-            } else {
-                System.out.println("Error adding shareholder");
-            }
+        int result = shareHolderRepository.saveShareholder(new Shareholder(shareholderName, nationalCode, phoneNumber));
+        if (result != 0) {
+            System.out.println("New shareholder has been added");
+        } else {
+            System.out.println("Error adding shareholder");
+        }
     }
 
     public String getPhoneNumber() {
@@ -49,13 +49,20 @@ public class ShareHolderService {
 
     public String getUniqueNationalCode() {
         while (true) {
-                System.out.println("Enter your national code: ");
-                String input = scanner.nextLine();
-                if (Validation.isValidNationalCode(input)) {
-                    return input;
-                } else {
-                    System.out.println("Invalid national code. Please try again.");
-                }
+            System.out.println("Enter your national code: ");
+            String input = scanner.nextLine();
+            if (Validation.isValidNationalCode(input)) {
+                return input;
+            } else {
+                System.out.println("Invalid national code. Please try again.");
             }
         }
     }
+
+    public void listOfShareholder() throws SQLException {
+        Shareholder[] shareholders = shareHolderRepository.listOfShareholder();
+        for (Shareholder shareholder : shareholders) {
+            System.out.println(shareholder);
+        }
+    }
+}
