@@ -24,7 +24,7 @@ public class ShareHolderService {
         int nationalCode = scanner.nextInt();
         scanner.nextLine();
         System.out.println("enter your phonenumber: ");
-        int phoneNumber = scanner.nextInt();
+        int phoneNumber = getUniquephonenumber();
         scanner.nextLine();
 
 
@@ -35,14 +35,14 @@ public class ShareHolderService {
             System.out.println("error");
     }
 
-    public String getUniquephonenumber() throws SQLException {
-        String phoneNumber;
+    public int getUniquephonenumber() throws SQLException {
+        int phoneNumber;
         while (true) {
             System.out.println("enter your phone number: ");
-            phoneNumber = scanner.nextLine();
+            phoneNumber = scanner.nextInt();
             scanner.nextLine();
-            if (Validation.checkPhoneNumber(phoneNumber)) {
-                boolean phoneNumberExist = shareHolderRepository.isPhoneNumberExist(phoneNumber);
+            if (Validation.checkPhoneNumber(String.valueOf(phoneNumber))) {
+                boolean phoneNumberExist = shareHolderRepository.isPhoneNumberExist(String.valueOf(phoneNumber));
 
                 if (!phoneNumberExist)
                     break;
@@ -54,5 +54,24 @@ public class ShareHolderService {
         return phoneNumber;
     }
 
+    public String getUniqueNationalCode() throws SQLException {
+        String nationalCode;
+        while (true) {
+            System.out.println("enter your email: ");
+            nationalCode = scanner.nextLine();
+            if (Validation.checkPhoneNumber(nationalCode)) {
+                boolean nationalCodeExist = shareHolderRepository.isNationalCodeExist(nationalCode);
+
+                if (!nationalCodeExist) {
+                    break;
+                } else {
+                    System.out.println("National code already exists");
+                }
+            } else {
+                System.out.println("Invalid national code");
+            }
+        }
+        return nationalCode;
+    }
 
 }
