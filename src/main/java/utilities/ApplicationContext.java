@@ -57,7 +57,7 @@ public class ApplicationContext {
         return PRODUCT_SERVICE;
     }
 
-    public static ShareholderBrandService getShareHolderBrandService() {
+    public static ShareholderBrandService getShareholderBrandService() {
         return SHARE_HOLDER_BRAND_SERVICE;
     }
 
