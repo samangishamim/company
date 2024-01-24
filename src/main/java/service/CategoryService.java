@@ -54,6 +54,7 @@ public class CategoryService {
     public void editCat(int categoryId) throws SQLException {
         System.out.println("***** edit category *****");
         Category category = categoryRepository.findByCategoryId(categoryId);
+        System.out.println(category);
         System.out.println("enter new name of category ");
         String newName = getCategoryNameUnique(category.getCategoryName());
         System.out.println("enter new description ");
@@ -64,5 +65,26 @@ public class CategoryService {
             System.out.println("edit is done");
         else
             System.out.println("error");
+    }
+
+    public void deletCat(int categoryId) throws SQLException {
+        System.out.println("**** delete category *****");
+        Category category = categoryRepository.findByCategoryId(categoryId);
+        System.out.println(category);
+        System.out.println("want to delete this category: [y / n]");
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine().toLowerCase();
+        if (input.equals("y")) {
+            int delete = categoryRepository.deleteCategory(categoryId);
+            if (delete != 0)
+                System.out.println("category deleted successfully.");
+            else
+                System.out.println("error");
+        } else if (input.equals("n")) {
+            System.out.println("category not deleted.");
+        } else {
+            System.out.println("Invalid input. Please enter 'y' or 'n'.");
+        }
+
     }
 }
