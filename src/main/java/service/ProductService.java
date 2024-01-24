@@ -101,4 +101,25 @@ public class ProductService {
         }
 
     }
-}
+
+    public void deletByBrand(int brandId) throws SQLException {
+        System.out.println("**** delete by brand  id *****");
+        int result = productRepository.deleteByBrandId(brandId);
+        if (result !=0)
+            System.out.println("success to delete product by brand ID");
+        else
+            System.out.println("error to delete product by brand ID");
+    }
+
+
+
+    public void deletByCategoryId(int categoryId) throws SQLException {
+        System.out.println("**** delete by CATEGORY  id *****");
+        int result = productRepository.deleteByCategoryId(categoryId);
+        if (result !=0)
+            System.out.println("success to delete product by category ID");
+        else
+            System.out.println("error to delete product by category ID");
+    }
+    }
+
