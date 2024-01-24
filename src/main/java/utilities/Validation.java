@@ -1,7 +1,9 @@
 package utilities;
 
 import javax.swing.plaf.PanelUI;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,31 +14,60 @@ public class Validation {
     public static final String WEBSITE_PATTERN = "^(https?://)?([\\w-]+\\.)+[\\w-]+(/[\\w-./?%&=]*)?$";
 
     public static final String PHONE_NUMBER_PATTERN = "^\\d{11}$";
+    public static final String DATE_PATTERN = "((18|19|20)[0-9]{2}[\\-.](0[13578]|1[02])[\\-.]" +
+            "(0[1-9]|[12][0-9]|3[01]))|(18|19|20)[0-9]{2}[\\-.](0[469]|11)[\\-.](0[1-9]|[12]" +
+            "[0-9]|30)|(18|19|20)[0-9]{2}[\\-.](02)[\\-.](0[1-9]|1[0-9]|2[0-8])" +
+            "|(((18|19|20)(04|08|[2468][048]|[13579][26]))|2000)[\\-.](02)[\\-.]29";
 
 
+    public static boolean isValidNationalCode(String melliCode) {
 
-    public static boolean isValidNationalCode(String input) {
-            if (input.length() != 10)
-                return false;
+        String[] identicalDigits = {
+                "0000000000",
+                "1111111111",
+                "2222222222",
+                "3333333333",
+                "4444444444",
+                "5555555555",
+                "6666666666",
+                "7777777777",
+                "8888888888",
+                "9999999999"};
 
-            if (!input.matches("\\d+"))
-                return false;
+        if (melliCode.trim().isEmpty()) {
+            System.out.println("National Code is empty");
+            return false; // National Code is empty
+        } else if (melliCode.length() != 10) {
+            System.out.println("National Code must be exactly 10 digits");
+            return false; // National Code is less or more than 10 digits
+        } else if (Arrays.asList(identicalDigits).contains(melliCode)) {
+            System.out.println("MelliCode is not valid (Fake MelliCode)");
+            return false; // Fake National Code
+        } else {
+            int sum = 0;
 
-            int[] array = new int[10];
-            for (int i = 0; i < 10; i++)
-                array[i] = Integer.parseInt(input.substring(i, i + 1));
+            for (int i = 0; i < 9; i++) {
+                sum += Character.getNumericValue(melliCode.charAt(i)) * (10 - i);
+            }
 
-            int num = array[0] * 10 + array[1] * 9 + array[2] * 8 + array[3] * 7 + array[4] * 6 + array[5] * 5 + array[6] * 4 + array[7] * 3 + array[8] * 2;
-            int remain = num % 11;
-            int control = 11 - remain;
+            int lastDigit;
+            int divideRemaining = sum % 11;
 
-            if (control == 11)
-                control = 1;
-            if (control == 10)
-                control = 0;
+            if (divideRemaining < 2) {
+                lastDigit = divideRemaining;
+            } else {
+                lastDigit = 11 - (divideRemaining);
+            }
 
-            return control == array[9];
+            if (Character.getNumericValue(melliCode.charAt(9)) == lastDigit) {
+                System.out.println("MelliCode is valid");
+                return true;
+            } else {
+                System.out.println("MelliCode is not valid");
+                return false; // Invalid MelliCode
+            }
         }
+    }
 
     public static boolean checkEmail(String email) {
         Pattern pattern = Pattern.compile(EMAIL_PATTERN);
@@ -59,12 +90,12 @@ public class Validation {
 
     public static boolean checkPhoneNumber(String phoneNumber) {
         Pattern pattern = Pattern.compile(PHONE_NUMBER_PATTERN);
-        System.out.println(pattern);
         Matcher matcher = pattern.matcher(phoneNumber);
-        System.out.println(matcher.matches());
         return matcher.matches();
     }
-
-
-
+    public static boolean checkValidDate(String date){
+        Pattern pattern = Pattern.compile(DATE_PATTERN);
+        Matcher matcher = pattern.matcher(date);
+        return matcher.matches();
+    }
 }
