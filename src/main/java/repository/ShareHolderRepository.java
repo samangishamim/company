@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Getter
@@ -27,6 +28,27 @@ public class ShareHolderRepository {
 
         int result = ps.executeUpdate();
         return result;
+    }
+
+    public Shareholder loadShareholder (int shareholderId) throws SQLException {
+        String loadBrand = "select * from shareholder where shareholder_id=?;";
+        PreparedStatement ps = connection.prepareStatement(loadBrand);
+        ps.setInt(1, shareholderId);
+
+        ResultSet resultSet = ps.executeQuery();
+        if (resultSet.next()) {
+            int shareholder_id = resultSet.getInt("shareholder_id");
+            String shareholderName = resultSet.getString("name");
+            int nationalCode = resultSet.getInt("national_code");
+            int phoneNumber = resultSet.getInt("phone-number");
+
+            return new Shareholder(shareholder_id,shareholderName,nationalCode,phoneNumber);
+
+        } else {
+            System.out.println("the shareholder id does not exist " + shareholderId);
+
+        }
+        return null;
     }
 
 }
