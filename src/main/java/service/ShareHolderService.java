@@ -18,12 +18,12 @@ public class ShareHolderService {
         this.shareHolderRepository = shareHolderRepository1;
     }
 
-    public void addShareholder() {
-        try {
+    public void addShareholder() throws SQLException {
+
             System.out.println("*** add shareholder ***");
             System.out.println("shareholder enter your name : ");
             String shareholderName = scanner.nextLine();
-            int nationalCode = getUniqueNationalCode();
+            String nationalCode = getUniqueNationalCode();
 
             String phoneNumber = getPhoneNumber();
 
@@ -33,9 +33,6 @@ public class ShareHolderService {
             } else {
                 System.out.println("Error adding shareholder");
             }
-        } catch (SQLException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
     }
 
     public String getPhoneNumber() {
@@ -50,19 +47,15 @@ public class ShareHolderService {
         }
     }
 
-    public int getUniqueNationalCode() {
+    public String getUniqueNationalCode() {
         while (true) {
-            try {
                 System.out.println("Enter your national code: ");
                 String input = scanner.nextLine();
                 if (Validation.isValidNationalCode(input)) {
-                    return Integer.parseInt(input);
+                    return input;
                 } else {
                     System.out.println("Invalid national code. Please try again.");
                 }
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a valid national code.");
             }
         }
     }
-}
