@@ -18,7 +18,7 @@ public class CategoryService {
 
     public void addCategory() throws SQLException {
         System.out.println("*** add category ***");
-        String categoryName = getCategoryNameUnique();
+        String categoryName = getCategoryNameUnique("");
         System.out.println("enter brand description");
         String description = scanner.nextLine();
         int result = categoryRepository.saveCategory(new Category(categoryName, description));
@@ -28,16 +28,18 @@ public class CategoryService {
             System.out.println("error");
     }
 
-    private String getCategoryNameUnique() throws SQLException {
+    private String getCategoryNameUnique(String str) throws SQLException {
         String categoryName;
         while (true) {
-            System.out.println("enter your website name : ");
+            System.out.println("enter your category name : ");
             categoryName = scanner.nextLine();
+            if (!str.equals("") && str.equals(categoryName))
+                return categoryName;
             boolean categoryNameExist = categoryRepository.isCategoryNameExist(categoryName);
             if (!categoryNameExist)
                 break;
             else
-                System.out.println("username is not available");
+                System.out.println("category name  is not available");
         }
         return categoryName;
     }
@@ -47,5 +49,20 @@ public class CategoryService {
         for (Category category : categories) {
             System.out.println(category);
         }
+    }
+
+    public void editCat(int categoryId) throws SQLException {
+        System.out.println("***** edit category *****");
+        Category category = categoryRepository.findByCategoryId(categoryId);
+        System.out.println("enter new name of category ");
+        String newName = getCategoryNameUnique(category.getCategoryName());
+        System.out.println("enter new description ");
+        String description = scanner.nextLine();
+
+        int result = categoryRepository.editCategory(new Category(categoryId, newName, description));
+        if (result!=0)
+            System.out.println("edit is done");
+        else
+            System.out.println("error");
     }
 }
