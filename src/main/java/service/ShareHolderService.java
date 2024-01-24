@@ -90,4 +90,24 @@ public class ShareHolderService {
             System.out.println("error -edit");
     }
 
-}
+    public void deletShareholder(int shareholderId) throws SQLException {
+        System.out.println("**** delete shareholder *****");
+        Shareholder shareholder = shareHolderRepository.findshareholderById(shareholderId);
+        System.out.println(shareholder);
+        System.out.println("want to delete this shareholder: [y / n]");
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine().toLowerCase();
+        if (input.equals("y")) {
+            int delete = shareHolderRepository.deleteShareholder(shareholderId);
+            if (delete != 0)
+                System.out.println("shareholder deleted successfully.");
+            else
+                System.out.println("error");
+        } else if (input.equals("n")) {
+            System.out.println("shareholder not deleted.");
+        } else {
+            System.out.println("Invalid input. Please enter 'y' or 'n'.");
+        }
+
+    }
+    }
