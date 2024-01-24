@@ -15,8 +15,8 @@ public class ApplicationContext {
 //
     private static final ProductRepository PRODUCT_REPOSITORY;
     private static final ProductService PRODUCT_SERVICE;
-//    private static final ShareHolderRepository SHARE_HOLDER_REPOSITORY;
-//    private static final ShareHolderService SHARE_HOLDER_SERVICE;
+    private static final ShareHolderRepository SHARE_HOLDER_REPOSITORY;
+    private static final ShareHolderService SHARE_HOLDER_SERVICE;
 //    private static final ShareHolderBrandRepository SHARE_HOLDER_BRAND_REPOSITORY;
 //    private static final ShareHolderBrandService SHARE_HOLDER_BRAND_SERVICE;
     private static final UserRepository USER_REPOSITORY;
@@ -38,8 +38,8 @@ public class ApplicationContext {
 //        SHARE_HOLDER_BRAND_REPOSITORY=new ShareHolderBrandRepository(CONNECTION);
 //        SHARE_HOLDER_BRAND_SERVICE=new ShareHolderBrandService(SHARE_HOLDER_BRAND_REPOSITORY);
 //
-//        SHARE_HOLDER_REPOSITORY=new ShareHolderRepository(CONNECTION);
-//        SHARE_HOLDER_SERVICE=new ShareHolderService(SHARE_HOLDER_REPOSITORY);
+        SHARE_HOLDER_REPOSITORY=new ShareHolderRepository(CONNECTION);
+        SHARE_HOLDER_SERVICE=new ShareHolderService(SHARE_HOLDER_REPOSITORY);
 
         USER_REPOSITORY=new UserRepository(CONNECTION);
         USER_SERVICE=new UserService(USER_REPOSITORY);
@@ -66,7 +66,7 @@ public class ApplicationContext {
     }
 
 
-//    public static ShareHolderService getShareHolderService() {
-//        return SHARE_HOLDER_SERVICE;
-//    }
+    public static ShareHolderService getShareHolderService() {
+        return SHARE_HOLDER_SERVICE;
+    }
 }
