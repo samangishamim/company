@@ -17,8 +17,8 @@ public class ApplicationContext {
     private static final ProductService PRODUCT_SERVICE;
     private static final ShareHolderRepository SHARE_HOLDER_REPOSITORY;
     private static final ShareHolderService SHARE_HOLDER_SERVICE;
-//    private static final ShareHolderBrandRepository SHARE_HOLDER_BRAND_REPOSITORY;
-//    private static final ShareHolderBrandService SHARE_HOLDER_BRAND_SERVICE;
+    private static final ShareHolderBrandRepository SHARE_HOLDER_BRAND_REPOSITORY;
+    private static final ShareHolderBrandService SHARE_HOLDER_BRAND_SERVICE;
     private static final UserRepository USER_REPOSITORY;
     private static final UserService USER_SERVICE;
 
@@ -35,8 +35,8 @@ public class ApplicationContext {
         PRODUCT_REPOSITORY= new ProductRepository(CONNECTION);
         PRODUCT_SERVICE= new ProductService(PRODUCT_REPOSITORY);
 //
-//        SHARE_HOLDER_BRAND_REPOSITORY=new ShareHolderBrandRepository(CONNECTION);
-//        SHARE_HOLDER_BRAND_SERVICE=new ShareHolderBrandService(SHARE_HOLDER_BRAND_REPOSITORY);
+        SHARE_HOLDER_BRAND_REPOSITORY=new ShareHolderBrandRepository(CONNECTION);
+        SHARE_HOLDER_BRAND_SERVICE=new ShareHolderBrandService(SHARE_HOLDER_BRAND_REPOSITORY);
 //
         SHARE_HOLDER_REPOSITORY=new ShareHolderRepository(CONNECTION);
         SHARE_HOLDER_SERVICE=new ShareHolderService(SHARE_HOLDER_REPOSITORY);
@@ -48,18 +48,18 @@ public class ApplicationContext {
     public static BrandService getBrandService() {
         return BRAND_SERVICE;
     }
-//
+
     public static CategoryService getCategoryService() {
         return CATEGORY_SERVICE;
     }
-//
+
     public static ProductService getProductService() {
         return PRODUCT_SERVICE;
     }
-//
-//    public static ShareHolderBrandService getShareHolderBrandService() {
-//        return SHARE_HOLDER_BRAND_SERVICE;
-//    }
+
+    public static ShareHolderBrandService getShareHolderBrandService() {
+        return SHARE_HOLDER_BRAND_SERVICE;
+    }
 
     public static UserService getUserService() {
         return USER_SERVICE;
