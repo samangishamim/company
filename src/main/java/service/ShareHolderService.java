@@ -21,7 +21,7 @@ public class ShareHolderService {
         System.out.println("shareholder enter your name : ");
         String shareholderName = scanner.nextLine();
         System.out.println("enter your national code: ");
-        int nationalCode = scanner.nextInt();
+        int nationalCode = getUniqueNationalCode();
         scanner.nextLine();
         System.out.println("enter your phonenumber: ");
         int phoneNumber = getUniquephonenumber();
