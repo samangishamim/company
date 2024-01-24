@@ -61,5 +61,13 @@ public class ShareHolderRepository {
 
         return ps.executeUpdate();
     }
+    public boolean isPhoneNumberExist(int phoneNumber) throws SQLException {
+        String existQuery = "select * from  shareholder where phone_number=?;";
+        PreparedStatement ps = connection.prepareStatement(existQuery);
+        ps.setInt(1, phoneNumber);
+
+        ResultSet resultSet = ps.executeQuery();
+        return resultSet.next();
+    }
 
 }
