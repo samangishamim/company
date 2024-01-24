@@ -107,7 +107,40 @@ public class Menu {
         }
     }
 
+    public void categoryMenu() throws SQLException {
+        int choice = -1;
+        while (choice != 0) {
+            System.out.println("***** category menu *****");
+            System.out.println("1-add ");
+            System.out.println("2-edit ");
+            System.out.println("3-delete ");
+            System.out.println("0-exit");
 
+
+            choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1 ->categoryService.addCategory();
+                case 2 -> {
+                    System.out.println("enter the brand id to edit ");
+                    int categoryId = scanner.nextInt();
+                    scanner.nextLine();
+                    categoryService.editCat(categoryId);
+                }
+                case 3 -> {
+                    System.out.println("enter the brand id to delete ");
+                    int categoryId = scanner.nextInt();
+                    scanner.nextLine();
+                    categoryService.deletCat(categoryId);
+                }
+                case 0 -> {
+                    System.out.println("exit from brand Menu ");
+                    break;
+                }
+            }
+        }
+    }
 
 
 }
