@@ -5,6 +5,8 @@ import entities.Shareholder;
 import repository.ShareHolderRepository;
 import utilities.Validation;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -33,18 +35,24 @@ public class ShareHolderService {
             System.out.println("error");
     }
 
-    private String getUniqueWebsite() {
-        String website;
+    public String getUniquephonenumber() throws SQLException {
+        String phoneNumber;
         while (true) {
-            System.out.println("enter your website url: ");
-            website = scanner.nextLine();
-            boolean checkWebsite = Validation.checkWebsite(website);
-            if (checkWebsite)
-                break;
-            else
-                System.out.println("this is not correct website url");
+            System.out.println("enter your phone number: ");
+            phoneNumber = scanner.nextLine();
+            scanner.nextLine();
+            if (Validation.checkPhoneNumber(phoneNumber)) {
+                boolean phoneNumberExist = shareHolderRepository.isPhoneNumberExist(phoneNumber);
+
+                if (!phoneNumberExist)
+                    break;
+                else
+                    System.out.println("phone number  exists ");
+            }else
+                System.out.println("invalid phone number");
         }
-        return website;
+        return phoneNumber;
     }
+
 
 }
