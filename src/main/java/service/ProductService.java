@@ -121,5 +121,14 @@ public class ProductService {
         else
             System.out.println("error to delete product by category ID");
     }
+
+    public void deletByBrandId(int brandId) throws SQLException {
+        System.out.println("**** delete by Brand  id *****");
+        int result = productRepository.deleteByBrandId(brandId);
+        if (result !=0)
+            System.out.println("success to delete product by brand ID");
+        else
+            System.out.println("error to delete product by brand ID");
+    }
     }
 
