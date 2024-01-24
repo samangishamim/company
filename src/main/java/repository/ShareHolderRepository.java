@@ -24,7 +24,7 @@ public class ShareHolderRepository {
         PreparedStatement ps = connection.prepareStatement(addShareholderQuery);
         ps.setString(1, shareholder.getShareholderName());
         ps.setInt(2, shareholder.getNationalCode());
-        ps.setInt(3, shareholder.getPhoneNumber());
+        ps.setString(3, shareholder.getPhoneNumber());
 
         int result = ps.executeUpdate();
         return result;
@@ -40,7 +40,7 @@ public class ShareHolderRepository {
             int shareholder_id = resultSet.getInt("shareholder_id");
             String shareholderName = resultSet.getString("name");
             int nationalCode = resultSet.getInt("national_code");
-            int phoneNumber = resultSet.getInt("phone-number");
+            String phoneNumber = resultSet.getString("phone-number");
 
             return new Shareholder(shareholder_id,shareholderName,nationalCode,phoneNumber);
 
@@ -56,7 +56,7 @@ public class ShareHolderRepository {
         PreparedStatement ps = connection.prepareStatement(editShareholderQuery);
         ps.setString(1,shareholder.getShareholderName());
         ps.setInt(2, shareholder.getNationalCode());
-        ps.setInt(3, shareholder.getPhoneNumber());
+        ps.setString(3, shareholder.getPhoneNumber());
         ps.setInt(4, shareholder.getShareholderId());
 
         return ps.executeUpdate();
@@ -69,5 +69,15 @@ public class ShareHolderRepository {
         ResultSet resultSet = ps.executeQuery();
         return resultSet.next();
     }
+
+    public boolean isNationalCodeExist(int nationalCode) throws SQLException {
+        String existQuery = "select * from  shareholder where national_code=?;";
+        PreparedStatement ps = connection.prepareStatement(existQuery);
+        ps.setInt(1, nationalCode);
+
+        ResultSet resultSet = ps.executeQuery();
+        return resultSet.next();
+    }
+
 
 }
