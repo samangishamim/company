@@ -3,9 +3,7 @@ package repository;
 import entities.Brand;
 import entities.Product;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class ProductRepository {
     private final Connection connection;
@@ -41,6 +39,28 @@ public class ProductRepository {
 
         return ps.executeUpdate();
 
+    }
+    public Product loadProduct (int productId) throws SQLException {
+        String loadProduct = "select * from product where product_id=?;";
+        PreparedStatement ps = connection.prepareStatement(loadProduct);
+        ps.setInt(1, productId);
+
+        ResultSet resultSet = ps.executeQuery();
+        if (resultSet.next()) {
+            int product_id = resultSet.getInt("product_id");
+            String name = resultSet.getString("name");
+            Date createDate = resultSet.getDate("crate_date");
+            int category_id = resultSet.getInt("category_id");
+            int brand_id = resultSet.getInt("brand_id");
+
+
+            return new Product(product_id,name,createDate,category_id,brand_id);
+
+        } else {
+            System.out.println("the product id is not exist " + productId);
+
+        }
+        return null;
     }
 
 }
