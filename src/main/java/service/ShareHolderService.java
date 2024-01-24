@@ -1,10 +1,12 @@
 package service;
 
 import entities.Brand;
+import entities.Product;
 import entities.Shareholder;
 import repository.ShareHolderRepository;
 import utilities.Validation;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,8 +16,8 @@ public class ShareHolderService {
     private final ShareHolderRepository shareHolderRepository;
     Scanner scanner = new Scanner(System.in);
 
-    public ShareHolderService(ShareHolderRepository shareHolderRepository1) {
-        this.shareHolderRepository = shareHolderRepository1;
+    public ShareHolderService(ShareHolderRepository shareHolderRepository) {
+        this.shareHolderRepository = shareHolderRepository;
     }
 
     public void addShareholder() throws SQLException {
@@ -23,7 +25,7 @@ public class ShareHolderService {
         System.out.println("*** add shareholder ***");
         System.out.println("shareholder enter your name : ");
         String shareholderName = scanner.nextLine();
-        String nationalCode = getUniqueNationalCode();
+        String nationalCode = getUniqueNationalCode("");
 
         String phoneNumber = getPhoneNumber();
 
@@ -47,10 +49,12 @@ public class ShareHolderService {
         }
     }
 
-    public String getUniqueNationalCode() {
+    public String getUniqueNationalCode(String str) {
         while (true) {
             System.out.println("Enter your national code: ");
             String input = scanner.nextLine();
+            if (!str.equals("")&&str.equals(input))
+                return input;
             if (Validation.isValidNationalCode(input)) {
                 return input;
             } else {
@@ -65,4 +69,25 @@ public class ShareHolderService {
             System.out.println(shareholder);
         }
     }
+    public void editShareholder(int id) throws SQLException {
+        Shareholder shareholder = shareHolderRepository.findshareholderById(id);
+        if (shareholder == null) {
+            return;
+        }
+        System.out.println(shareholder);
+        System.out.println("your shareholder name is: " + shareholder.getShareholderName());
+        String shareholderName = scanner.nextLine();
+        System.out.println("your shareholder national code is: " + shareholder.getNationalCode());
+        String uniqueNationalCode = getUniqueNationalCode(shareholder.getNationalCode());
+        System.out.println("your phone number is: " + shareholder.getPhoneNumber());
+        String phoneNumber = getPhoneNumber();
+
+
+        int result = shareHolderRepository.editShareholder(new Shareholder(id,shareholderName,uniqueNationalCode,phoneNumber));
+        if (result != 0) {
+            System.out.println("edit is done");
+        } else
+            System.out.println("error -edit");
+    }
+
 }
