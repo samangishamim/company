@@ -85,4 +85,12 @@ public class ProductRepository {
         }
         return  null;
     }
+
+    public  int deleteByBrandId(int brandId) throws SQLException {
+        String deleteQuery = "delete from product where brand_id=?;";
+        PreparedStatement ps = connection.prepareStatement(deleteQuery);
+        ps.setInt(1, brandId);
+
+        return ps.executeUpdate();
+    }
 }
