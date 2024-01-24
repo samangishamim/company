@@ -1,14 +1,12 @@
 package repository;
 
 import entities.Brand;
+import entities.Product;
 import entities.Shareholder;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 @Getter
 @Setter
@@ -93,5 +91,21 @@ public class ShareHolderRepository {
         return ps.executeUpdate();
 
     }
+    public Shareholder findshareholderById(int id) throws SQLException {
+        String findPQuery="select * from shareholder where shareholder_id=?;";
+        PreparedStatement ps= connection.prepareStatement(findPQuery);
+        ps.setInt(1,id);
+        ResultSet resultSet = ps.executeQuery();
+        if (resultSet.next()) {
+            int shareholderId = resultSet.getInt(1);
+            String shareholderName = resultSet.getString(2);
+            String nationalcode = resultSet.getString(4);
+            String phoneNumber = resultSet.getString(5);
 
+            return new Shareholder(shareholderId,shareholderName,nationalcode,phoneNumber);
+
+
+        }
+        return  null;
+    }
 }
