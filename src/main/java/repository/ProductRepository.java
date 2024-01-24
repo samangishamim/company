@@ -93,4 +93,12 @@ public class ProductRepository {
 
         return ps.executeUpdate();
     }
+
+    public  int deleteByCategoryId(int categoryId) throws SQLException {
+        String deleteQuery = "delete from product where category_id=?;";
+        PreparedStatement ps = connection.prepareStatement(deleteQuery);
+        ps.setInt(1, categoryId);
+
+        return ps.executeUpdate();
+    }
 }
