@@ -54,13 +54,13 @@ public class ShareHolderService {
         return phoneNumber;
     }
 
-    public String getUniqueNationalCode() throws SQLException {
-        String nationalCode;
+    public int getUniqueNationalCode() throws SQLException {
+        int nationalCode;
         while (true) {
             System.out.println("enter your email: ");
-            nationalCode = scanner.nextLine();
-            if (Validation.checkPhoneNumber(nationalCode)) {
-                boolean nationalCodeExist = shareHolderRepository.isNationalCodeExist(nationalCode);
+            nationalCode = scanner.nextInt();
+            if (Validation.validateMelliCode(String.valueOf(nationalCode))) {
+                boolean nationalCodeExist = shareHolderRepository.isNationalCodeExist(String.valueOf(nationalCode));
 
                 if (!nationalCodeExist) {
                     break;
