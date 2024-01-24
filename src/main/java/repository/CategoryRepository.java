@@ -74,4 +74,19 @@ public class CategoryRepository {
         }
         return categories;
     }
+
+    public Category findByCategoryId(int categoryId) throws SQLException {
+        String findQuery="select * from category where category_id=?;";
+        PreparedStatement ps=connection.prepareStatement(findQuery);
+        ps.setInt(1,categoryId);
+        ResultSet resultSet = ps.executeQuery();
+        if (resultSet.next()){
+            int categoryId1 = resultSet.getInt(1);
+            String name = resultSet.getString(2);
+            String description = resultSet.getString(3);
+
+            return new Category(categoryId1,name,description);
+        }
+        return  null;
+    }
 }
