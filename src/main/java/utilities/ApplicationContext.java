@@ -27,17 +27,17 @@ public class ApplicationContext {
         CONNECTION = JdbcConnection.getConnection();
         BRAND_REPOSITORY = new BrandRepository(CONNECTION);
         BRAND_SERVICE = new BrandService(BRAND_REPOSITORY);
-//
+
         CATEGORY_REPOSITORY = new CategoryRepository(CONNECTION);
         CATEGORY_SERVICE = new CategoryService(CATEGORY_REPOSITORY);
 
-//
+
         PRODUCT_REPOSITORY= new ProductRepository(CONNECTION);
         PRODUCT_SERVICE= new ProductService(PRODUCT_REPOSITORY);
-//
+
         SHARE_HOLDER_BRAND_REPOSITORY=new ShareHolderBrandRepository(CONNECTION);
         SHARE_HOLDER_BRAND_SERVICE=new ShareHolderBrandService(SHARE_HOLDER_BRAND_REPOSITORY);
-//
+
         SHARE_HOLDER_REPOSITORY=new ShareHolderRepository(CONNECTION);
         SHARE_HOLDER_SERVICE=new ShareHolderService(SHARE_HOLDER_REPOSITORY);
 
