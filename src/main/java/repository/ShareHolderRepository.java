@@ -19,7 +19,7 @@ public class ShareHolderRepository {
         this.connection = connection;
     }
 
-    public  int addShareholder(Shareholder shareholder) throws SQLException {
+    public  int saveShareholder(Shareholder shareholder) throws SQLException {
         String addShareholderQuery = "insert into shareholder (name, national_code, phone_number) values (?,?,?);";
         PreparedStatement ps = connection.prepareStatement(addShareholderQuery);
         ps.setString(1, shareholder.getShareholderName());
