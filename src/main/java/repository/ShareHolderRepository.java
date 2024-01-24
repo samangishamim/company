@@ -23,7 +23,7 @@ public class ShareHolderRepository {
         String addShareholderQuery = "insert into shareholder (name, national_code, phone_number) values (?,?,?);";
         PreparedStatement ps = connection.prepareStatement(addShareholderQuery);
         ps.setString(1, shareholder.getShareholderName());
-        ps.setInt(2, shareholder.getNationalCode());
+        ps.setString(2, shareholder.getNationalCode());
         ps.setString(3, shareholder.getPhoneNumber());
 
         int result = ps.executeUpdate();
@@ -39,7 +39,7 @@ public class ShareHolderRepository {
         if (resultSet.next()) {
             int shareholder_id = resultSet.getInt("shareholder_id");
             String shareholderName = resultSet.getString("name");
-            int nationalCode = resultSet.getInt("national_code");
+            String nationalCode = resultSet.getString("national_code");
             String phoneNumber = resultSet.getString("phone-number");
 
             return new Shareholder(shareholder_id,shareholderName,nationalCode,phoneNumber);
@@ -55,29 +55,34 @@ public class ShareHolderRepository {
         String editShareholderQuery = "update shareholder set name=?,national_code=?,phone_number=? where shareholder_id=?;";
         PreparedStatement ps = connection.prepareStatement(editShareholderQuery);
         ps.setString(1,shareholder.getShareholderName());
-        ps.setInt(2, shareholder.getNationalCode());
+        ps.setString(2, shareholder.getNationalCode());
         ps.setString(3, shareholder.getPhoneNumber());
         ps.setInt(4, shareholder.getShareholderId());
 
         return ps.executeUpdate();
     }
-    public boolean isPhoneNumberExist(String phoneNumber) throws SQLException {
-        String existQuery = "select * from  shareholder where phone_number=?;";
-        PreparedStatement ps = connection.prepareStatement(existQuery);
-        ps.setString(1, phoneNumber);
-
+    public Shareholder[] listOfShareholder() throws SQLException {
+        String shareholderQuery = "select * from shareholder;";
+        PreparedStatement ps = connection.prepareStatement(shareholderQuery,
+                ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         ResultSet resultSet = ps.executeQuery();
-        return resultSet.next();
+        int counter = 0;
+        while ((resultSet.next())) {
+            counter++;
+        }
+        Shareholder[] shareholders = new Shareholder[counter];
+        resultSet.beforeFirst();
+        int k = 0;
+        while (resultSet.next()) {
+            int shareholderId=resultSet.getInt(1);
+            String shareholderName = resultSet.getString(2);
+            String nationalCode = resultSet.getString(3);
+            String phoneNumber = resultSet.getString(4);
+
+
+            shareholders[k++] = new Shareholder(shareholderId,shareholderName,nationalCode,phoneNumber);
+        }
+        return shareholders;
     }
-
-    public boolean isNationalCodeExist(int nationalCode) throws SQLException {
-        String existQuery = "select * from  shareholder where national_code=?;";
-        PreparedStatement ps = connection.prepareStatement(existQuery);
-        ps.setInt(1, nationalCode);
-
-        ResultSet resultSet = ps.executeQuery();
-        return resultSet.next();
-    }
-
 
 }
