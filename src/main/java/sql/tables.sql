@@ -2,8 +2,8 @@ CREATE TABLE shareholder
 (
     shareholder_id            SERIAL PRIMARY KEY,
     name          VARCHAR(255),
-    national_code VARCHAR(255) unique ,
-    phone_number  VARCHAR(255)
+    national_code int unique ,
+    phone_number  varchar(255)
 );
 
 CREATE TABLE brand
