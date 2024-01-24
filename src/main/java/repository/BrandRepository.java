@@ -153,7 +153,7 @@ public class BrandRepository {
         if (resultSet3.next()){
             int shareholder_Id=resultSet3.getInt(1);
             String shareholderName = resultSet3.getString(2);
-            int phoneNumber = resultSet3.getInt(3);
+            String phoneNumber = resultSet3.getString(3);
             int nationalCode = resultSet3.getInt(4);
             return  new Shareholder(shareholderId,shareholderName,nationalCode,phoneNumber);
         }
