@@ -60,7 +60,7 @@ public class CategoryService {
         System.out.println("enter new description ");
         String description = scanner.nextLine();
 
-        int result = categoryRepository.editCategory(new Category(categoryId, newName, description));
+        int result = categoryRepository.editCategory(new Category( categoryId,newName, description));
         if (result!=0)
             System.out.println("edit is done");
         else
