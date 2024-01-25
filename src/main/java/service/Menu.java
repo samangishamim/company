@@ -235,11 +235,9 @@ public class Menu {
             switch (choice) {
                 case 1 -> shareholderBrandService.addShareholderBrand();
                 case 2 -> {
-                    System.out.println("enter the shareholder-brand id to delete ");
+                    System.out.println("enter the shareholder id to delete ");
                     int shareholderId = scanner.nextInt();
                     scanner.nextLine();
-                    shareholderBrandService.deleteByBrandId(shareholderId);
-                    shareholderBrandService.deleteByShareholderId(shareholderId);
                     shareholderBrandService.deleteShareholderBrand(shareholderId);
 
                 }
