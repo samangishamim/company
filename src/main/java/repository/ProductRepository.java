@@ -31,6 +31,7 @@ public class ProductRepository {
         ps.setDate(2, product.getProductDate());
         ps.setInt(3, product.getCategoryId());
         ps.setInt(4, product.getBrandId());
+        ps.setInt(5,product.getProductId());
 
         return ps.executeUpdate();
     }
@@ -53,7 +54,7 @@ public class ProductRepository {
         if (resultSet.next()) {
             int product_id = resultSet.getInt("product_id");
             String name = resultSet.getString("name");
-            Date createDate = resultSet.getDate("crate_date");
+            Date createDate = resultSet.getDate("create_date");
             int category_id = resultSet.getInt("category_id");
             int brand_id = resultSet.getInt("brand_id");
 
