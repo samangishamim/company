@@ -2,7 +2,7 @@ CREATE TABLE shareholder
 (
     shareholder_id            SERIAL PRIMARY KEY,
     name          VARCHAR(255),
-    national_code int unique ,
+    national_code varchar(255) unique ,
     phone_number  varchar(255)
 );
 
