@@ -92,15 +92,15 @@ public class ShareHolderRepository {
 
     }
     public Shareholder findshareholderById(int id) throws SQLException {
-        String findPQuery="select * from shareholder where shareholder_id=?;";
-        PreparedStatement ps= connection.prepareStatement(findPQuery);
+        String findSQuery="select * from shareholder where shareholder_id=?;";
+        PreparedStatement ps= connection.prepareStatement(findSQuery);
         ps.setInt(1,id);
         ResultSet resultSet = ps.executeQuery();
         if (resultSet.next()) {
             int shareholderId = resultSet.getInt(1);
             String shareholderName = resultSet.getString(2);
-            String nationalcode = resultSet.getString(4);
-            String phoneNumber = resultSet.getString(5);
+            String nationalcode = resultSet.getString(3);
+            String phoneNumber = resultSet.getString(4);
 
             return new Shareholder(shareholderId,shareholderName,nationalcode,phoneNumber);
 
