@@ -4,24 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4007635c-41c0-414e-be65-69c75eb35c46" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Sql" afterDir="false" />
+    <list default="true" id="4007635c-41c0-414e-be65-69c75eb35c46" name="Changes" comment="chore:fix bug">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Shareholder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Shareholder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/ShareHolderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/ShareHolderRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2bH99uWtlKQqnWa1Ugezdb3EFWu" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -29,23 +39,48 @@
     <option name="showLibraryContents" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ASUS/IdeaProjects/HW08&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editing.templates&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ],
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/&quot;: [
+      &quot;PostgreSQL&quot;
     ]
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="repository" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="HW08" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -54,11 +89,453 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1705860991302</updated>
-      <workItem from="1705860992469" duration="551000" />
+      <workItem from="1705860992469" duration="2026000" />
+      <workItem from="1705921838436" duration="5681000" />
+      <workItem from="1705933585182" duration="2475000" />
+      <workItem from="1705938156988" duration="12163000" />
+      <workItem from="1705953590640" duration="2472000" />
+      <workItem from="1706007600425" duration="12434000" />
+      <workItem from="1706023537596" duration="10292000" />
+      <workItem from="1706089254897" duration="18772000" />
+      <workItem from="1706119014297" duration="9785000" />
+      <workItem from="1706128887805" duration="6436000" />
+      <workItem from="1706135371274" duration="9691000" />
     </task>
+    <task id="LOCAL-00176" summary="chore: fix addShareholder and getPhoneNumber and getUniqueNationalCode&#10;method">
+      <option name="closed" value="true" />
+      <created>1706110078903</created>
+      <option name="number" value="00176" />
+      <option name="presentableId" value="LOCAL-00176" />
+      <option name="project" value="LOCAL" />
+      <updated>1706110078903</updated>
+    </task>
+    <task id="LOCAL-00177" summary="chore: fix methods">
+      <option name="closed" value="true" />
+      <created>1706110097040</created>
+      <option name="number" value="00177" />
+      <option name="presentableId" value="LOCAL-00177" />
+      <option name="project" value="LOCAL" />
+      <updated>1706110097040</updated>
+    </task>
+    <task id="LOCAL-00178" summary="chore: add loadProduct in ProductRepository">
+      <option name="closed" value="true" />
+      <created>1706114471459</created>
+      <option name="number" value="00178" />
+      <option name="presentableId" value="LOCAL-00178" />
+      <option name="project" value="LOCAL" />
+      <updated>1706114471459</updated>
+    </task>
+    <task id="LOCAL-00179" summary="chore: add getValidDate in ProductService">
+      <option name="closed" value="true" />
+      <created>1706116067715</created>
+      <option name="number" value="00179" />
+      <option name="presentableId" value="LOCAL-00179" />
+      <option name="project" value="LOCAL" />
+      <updated>1706116067719</updated>
+    </task>
+    <task id="LOCAL-00180" summary="chore: add listOfShareholder method in ShareHolderRepository">
+      <option name="closed" value="true" />
+      <created>1706122781217</created>
+      <option name="number" value="00180" />
+      <option name="presentableId" value="LOCAL-00180" />
+      <option name="project" value="LOCAL" />
+      <updated>1706122781222</updated>
+    </task>
+    <task id="LOCAL-00181" summary="chore: fix bug in all methods">
+      <option name="closed" value="true" />
+      <created>1706122830214</created>
+      <option name="number" value="00181" />
+      <option name="presentableId" value="LOCAL-00181" />
+      <option name="project" value="LOCAL" />
+      <updated>1706122830215</updated>
+    </task>
+    <task id="LOCAL-00182" summary="chore: fix bug in all methods">
+      <option name="closed" value="true" />
+      <created>1706122860080</created>
+      <option name="number" value="00182" />
+      <option name="presentableId" value="LOCAL-00182" />
+      <option name="project" value="LOCAL" />
+      <updated>1706122860081</updated>
+    </task>
+    <task id="LOCAL-00183" summary="chore: add saveShareholderBrand method in ShareHolderBrandRepository">
+      <option name="closed" value="true" />
+      <created>1706123467185</created>
+      <option name="number" value="00183" />
+      <option name="presentableId" value="LOCAL-00183" />
+      <option name="project" value="LOCAL" />
+      <updated>1706123467185</updated>
+    </task>
+    <task id="LOCAL-00184" summary="chore: add deleteShareholderBrand method in ShareHolderBrandRepository">
+      <option name="closed" value="true" />
+      <created>1706123611172</created>
+      <option name="number" value="00184" />
+      <option name="presentableId" value="LOCAL-00184" />
+      <option name="project" value="LOCAL" />
+      <updated>1706123611172</updated>
+    </task>
+    <task id="LOCAL-00185" summary="chore: add and fix name deleteShareholder method in ShareHolderRepository">
+      <option name="closed" value="true" />
+      <created>1706123720408</created>
+      <option name="number" value="00185" />
+      <option name="presentableId" value="LOCAL-00185" />
+      <option name="project" value="LOCAL" />
+      <updated>1706123720408</updated>
+    </task>
+    <task id="LOCAL-00186" summary="chore: add  deleteShareholderBrand method in ShareHolderBrandRepositoryRepository">
+      <option name="closed" value="true" />
+      <created>1706123783794</created>
+      <option name="number" value="00186" />
+      <option name="presentableId" value="LOCAL-00186" />
+      <option name="project" value="LOCAL" />
+      <updated>1706123783795</updated>
+    </task>
+    <task id="LOCAL-00187" summary="chore: add  ShareHolderBrandService constroctor ShareHolderBrandService">
+      <option name="closed" value="true" />
+      <created>1706123912443</created>
+      <option name="number" value="00187" />
+      <option name="presentableId" value="LOCAL-00187" />
+      <option name="project" value="LOCAL" />
+      <updated>1706123912443</updated>
+    </task>
+    <task id="LOCAL-00188" summary="chore: fix bug">
+      <option name="closed" value="true" />
+      <created>1706124170939</created>
+      <option name="number" value="00188" />
+      <option name="presentableId" value="LOCAL-00188" />
+      <option name="project" value="LOCAL" />
+      <updated>1706124170939</updated>
+    </task>
+    <task id="LOCAL-00189" summary="chore: add listOfShareholder in ShareHolderBrandService">
+      <option name="closed" value="true" />
+      <created>1706125184786</created>
+      <option name="number" value="00189" />
+      <option name="presentableId" value="LOCAL-00189" />
+      <option name="project" value="LOCAL" />
+      <updated>1706125184787</updated>
+    </task>
+    <task id="LOCAL-00190" summary="chore: add addShareholderBrand in ShareHolderBrandService">
+      <option name="closed" value="true" />
+      <created>1706125473909</created>
+      <option name="number" value="00190" />
+      <option name="presentableId" value="LOCAL-00190" />
+      <option name="project" value="LOCAL" />
+      <updated>1706125473909</updated>
+    </task>
+    <task id="LOCAL-00191" summary="chore: fix bug">
+      <option name="closed" value="true" />
+      <created>1706125720117</created>
+      <option name="number" value="00191" />
+      <option name="presentableId" value="LOCAL-00191" />
+      <option name="project" value="LOCAL" />
+      <updated>1706125720117</updated>
+    </task>
+    <task id="LOCAL-00192" summary="chore: add new ShareholderBrandRepository class">
+      <option name="closed" value="true" />
+      <created>1706127128295</created>
+      <option name="number" value="00192" />
+      <option name="presentableId" value="LOCAL-00192" />
+      <option name="project" value="LOCAL" />
+      <updated>1706127128296</updated>
+    </task>
+    <task id="LOCAL-00193" summary="chore: add new constructor ShareholderBrandRepository">
+      <option name="closed" value="true" />
+      <created>1706127172154</created>
+      <option name="number" value="00193" />
+      <option name="presentableId" value="LOCAL-00193" />
+      <option name="project" value="LOCAL" />
+      <updated>1706127172154</updated>
+    </task>
+    <task id="LOCAL-00194" summary="chore: add  class ShareholderBrandService">
+      <option name="closed" value="true" />
+      <created>1706127363573</created>
+      <option name="number" value="00194" />
+      <option name="presentableId" value="LOCAL-00194" />
+      <option name="project" value="LOCAL" />
+      <updated>1706127363573</updated>
+    </task>
+    <task id="LOCAL-00195" summary="chore: add  constructor ShareholderBrandService">
+      <option name="closed" value="true" />
+      <created>1706127410956</created>
+      <option name="number" value="00195" />
+      <option name="presentableId" value="LOCAL-00195" />
+      <option name="project" value="LOCAL" />
+      <updated>1706127410956</updated>
+    </task>
+    <task id="LOCAL-00196" summary="chore: fix bug">
+      <option name="closed" value="true" />
+      <created>1706127593386</created>
+      <option name="number" value="00196" />
+      <option name="presentableId" value="LOCAL-00196" />
+      <option name="project" value="LOCAL" />
+      <updated>1706127593386</updated>
+    </task>
+    <task id="LOCAL-00197" summary="chore: add save method">
+      <option name="closed" value="true" />
+      <created>1706128771786</created>
+      <option name="number" value="00197" />
+      <option name="presentableId" value="LOCAL-00197" />
+      <option name="project" value="LOCAL" />
+      <updated>1706128771787</updated>
+    </task>
+    <task id="LOCAL-00198" summary="chore: add  method">
+      <option name="closed" value="true" />
+      <created>1706129198966</created>
+      <option name="number" value="00198" />
+      <option name="presentableId" value="LOCAL-00198" />
+      <option name="project" value="LOCAL" />
+      <updated>1706129198967</updated>
+    </task>
+    <task id="LOCAL-00199" summary="chore: add 3 method to delete">
+      <option name="closed" value="true" />
+      <created>1706129566209</created>
+      <option name="number" value="00199" />
+      <option name="presentableId" value="LOCAL-00199" />
+      <option name="project" value="LOCAL" />
+      <updated>1706129566210</updated>
+    </task>
+    <task id="LOCAL-00200" summary="chore: add findByCategoryId method">
+      <option name="closed" value="true" />
+      <created>1706130320617</created>
+      <option name="number" value="00200" />
+      <option name="presentableId" value="LOCAL-00200" />
+      <option name="project" value="LOCAL" />
+      <updated>1706130320617</updated>
+    </task>
+    <task id="LOCAL-00201" summary="chore: add editCat method">
+      <option name="closed" value="true" />
+      <created>1706131196088</created>
+      <option name="number" value="00201" />
+      <option name="presentableId" value="LOCAL-00201" />
+      <option name="project" value="LOCAL" />
+      <updated>1706131196088</updated>
+    </task>
+    <task id="LOCAL-00202" summary="chore: add deletCat method">
+      <option name="closed" value="true" />
+      <created>1706131476351</created>
+      <option name="number" value="00202" />
+      <option name="presentableId" value="LOCAL-00202" />
+      <option name="project" value="LOCAL" />
+      <updated>1706131476351</updated>
+    </task>
+    <task id="LOCAL-00203" summary="chore: add findProductById method">
+      <option name="closed" value="true" />
+      <created>1706132092634</created>
+      <option name="number" value="00203" />
+      <option name="presentableId" value="LOCAL-00203" />
+      <option name="project" value="LOCAL" />
+      <updated>1706132092635</updated>
+    </task>
+    <task id="LOCAL-00204" summary="chore: add deletProduct method">
+      <option name="closed" value="true" />
+      <created>1706132159564</created>
+      <option name="number" value="00204" />
+      <option name="presentableId" value="LOCAL-00204" />
+      <option name="project" value="LOCAL" />
+      <updated>1706132159564</updated>
+    </task>
+    <task id="LOCAL-00205" summary="chore: add findshareholderById method">
+      <option name="closed" value="true" />
+      <created>1706132407536</created>
+      <option name="number" value="00205" />
+      <option name="presentableId" value="LOCAL-00205" />
+      <option name="project" value="LOCAL" />
+      <updated>1706132407536</updated>
+    </task>
+    <task id="LOCAL-00206" summary="chore: add editShareholder method">
+      <option name="closed" value="true" />
+      <created>1706133046702</created>
+      <option name="number" value="00206" />
+      <option name="presentableId" value="LOCAL-00206" />
+      <option name="project" value="LOCAL" />
+      <updated>1706133046702</updated>
+    </task>
+    <task id="LOCAL-00207" summary="chore: add deletShareholder method">
+      <option name="closed" value="true" />
+      <created>1706133220344</created>
+      <option name="number" value="00207" />
+      <option name="presentableId" value="LOCAL-00207" />
+      <option name="project" value="LOCAL" />
+      <updated>1706133220344</updated>
+    </task>
+    <task id="LOCAL-00208" summary="chore: add Menu class">
+      <option name="closed" value="true" />
+      <created>1706133315072</created>
+      <option name="number" value="00208" />
+      <option name="presentableId" value="LOCAL-00208" />
+      <option name="project" value="LOCAL" />
+      <updated>1706133315072</updated>
+    </task>
+    <task id="LOCAL-00209" summary="chore: add deleteByBrandId method">
+      <option name="closed" value="true" />
+      <created>1706135164110</created>
+      <option name="number" value="00209" />
+      <option name="presentableId" value="LOCAL-00209" />
+      <option name="project" value="LOCAL" />
+      <updated>1706135164111</updated>
+    </task>
+    <task id="LOCAL-00210" summary="chore: add two method for deletByCategoryId">
+      <option name="closed" value="true" />
+      <created>1706135915888</created>
+      <option name="number" value="00210" />
+      <option name="presentableId" value="LOCAL-00210" />
+      <option name="project" value="LOCAL" />
+      <updated>1706135915888</updated>
+    </task>
+    <task id="LOCAL-00211" summary="chore: add sub menu for the main menu : brand menu">
+      <option name="closed" value="true" />
+      <created>1706136944071</created>
+      <option name="number" value="00211" />
+      <option name="presentableId" value="LOCAL-00211" />
+      <option name="project" value="LOCAL" />
+      <updated>1706136944071</updated>
+    </task>
+    <task id="LOCAL-00212" summary="chore: add sub menu for the main menu : category menu">
+      <option name="closed" value="true" />
+      <created>1706136969054</created>
+      <option name="number" value="00212" />
+      <option name="presentableId" value="LOCAL-00212" />
+      <option name="project" value="LOCAL" />
+      <updated>1706136969054</updated>
+    </task>
+    <task id="LOCAL-00213" summary="chore: add deletByBrandId method">
+      <option name="closed" value="true" />
+      <created>1706137417655</created>
+      <option name="number" value="00213" />
+      <option name="presentableId" value="LOCAL-00213" />
+      <option name="project" value="LOCAL" />
+      <updated>1706137417656</updated>
+    </task>
+    <task id="LOCAL-00214" summary="chore: add sub menu for the main menu : product menu">
+      <option name="closed" value="true" />
+      <created>1706137752197</created>
+      <option name="number" value="00214" />
+      <option name="presentableId" value="LOCAL-00214" />
+      <option name="project" value="LOCAL" />
+      <updated>1706137752197</updated>
+    </task>
+    <task id="LOCAL-00215" summary="chore: fix bug">
+      <option name="closed" value="true" />
+      <created>1706137984842</created>
+      <option name="number" value="00215" />
+      <option name="presentableId" value="LOCAL-00215" />
+      <option name="project" value="LOCAL" />
+      <updated>1706137984842</updated>
+    </task>
+    <task id="LOCAL-00216" summary="chore: fix bug">
+      <option name="closed" value="true" />
+      <created>1706138004903</created>
+      <option name="number" value="00216" />
+      <option name="presentableId" value="LOCAL-00216" />
+      <option name="project" value="LOCAL" />
+      <updated>1706138004903</updated>
+    </task>
+    <task id="LOCAL-00217" summary="chore: add sub menu for the main menu : shareholder and ShareholderBrand menu">
+      <option name="closed" value="true" />
+      <created>1706138711178</created>
+      <option name="number" value="00217" />
+      <option name="presentableId" value="LOCAL-00217" />
+      <option name="project" value="LOCAL" />
+      <updated>1706138711178</updated>
+    </task>
+    <task id="LOCAL-00218" summary="chore:fix bug">
+      <option name="closed" value="true" />
+      <created>1706138737029</created>
+      <option name="number" value="00218" />
+      <option name="presentableId" value="LOCAL-00218" />
+      <option name="project" value="LOCAL" />
+      <updated>1706138737029</updated>
+    </task>
+    <task id="LOCAL-00219" summary="chore:change national code regex">
+      <option name="closed" value="true" />
+      <created>1706138767036</created>
+      <option name="number" value="00219" />
+      <option name="presentableId" value="LOCAL-00219" />
+      <option name="project" value="LOCAL" />
+      <updated>1706138767036</updated>
+    </task>
+    <task id="LOCAL-00220" summary="chore:fix bug">
+      <option name="closed" value="true" />
+      <created>1706141681594</created>
+      <option name="number" value="00220" />
+      <option name="presentableId" value="LOCAL-00220" />
+      <option name="project" value="LOCAL" />
+      <updated>1706141681594</updated>
+    </task>
+    <task id="LOCAL-00221" summary="chore:fix bug">
+      <option name="closed" value="true" />
+      <created>1706142436496</created>
+      <option name="number" value="00221" />
+      <option name="presentableId" value="LOCAL-00221" />
+      <option name="project" value="LOCAL" />
+      <updated>1706142436496</updated>
+    </task>
+    <task id="LOCAL-00222" summary="chore:fix bug">
+      <option name="closed" value="true" />
+      <created>1706142457009</created>
+      <option name="number" value="00222" />
+      <option name="presentableId" value="LOCAL-00222" />
+      <option name="project" value="LOCAL" />
+      <updated>1706142457009</updated>
+    </task>
+    <task id="LOCAL-00223" summary="chore:fix bug">
+      <option name="closed" value="true" />
+      <created>1706142474288</created>
+      <option name="number" value="00223" />
+      <option name="presentableId" value="LOCAL-00223" />
+      <option name="project" value="LOCAL" />
+      <updated>1706142474288</updated>
+    </task>
+    <task id="LOCAL-00224" summary="chore:fix bug">
+      <option name="closed" value="true" />
+      <created>1706142486732</created>
+      <option name="number" value="00224" />
+      <option name="presentableId" value="LOCAL-00224" />
+      <option name="project" value="LOCAL" />
+      <updated>1706142486732</updated>
+    </task>
+    <option name="localTasksCounter" value="225" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="chore: add new constructor ShareholderBrandRepository" />
+    <MESSAGE value="chore: add  class ShareholderBrandService" />
+    <MESSAGE value="chore: add  constructor ShareholderBrandService" />
+    <MESSAGE value="chore: add save method" />
+    <MESSAGE value="chore: add  method" />
+    <MESSAGE value="chore: add 3 method to delete" />
+    <MESSAGE value="chore: add findByCategoryId method" />
+    <MESSAGE value="chore: add editCat method" />
+    <MESSAGE value="chore: add deletCat method" />
+    <MESSAGE value="chore: add findProductById method" />
+    <MESSAGE value="chore: add deletProduct method" />
+    <MESSAGE value="chore: add findshareholderById method" />
+    <MESSAGE value="chore: add editShareholder method" />
+    <MESSAGE value="chore: add deletShareholder method" />
+    <MESSAGE value="chore: add Menu class" />
+    <MESSAGE value="chore: add deleteByBrandId method" />
+    <MESSAGE value="chore: add two method for deletByCategoryId" />
+    <MESSAGE value="chore: add sub menu for the main menu : brand menu" />
+    <MESSAGE value="chore: add sub menu for the main menu : category menu" />
+    <MESSAGE value="chore: add deletByBrandId method" />
+    <MESSAGE value="chore: add sub menu for the main menu : product menu" />
+    <MESSAGE value="chore: fix bug" />
+    <MESSAGE value="chore: add sub menu for the main menu : shareholder and ShareholderBrand menu" />
+    <MESSAGE value="chore:change national code regex" />
+    <MESSAGE value="chore:fix bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore:fix bug" />
   </component>
 </project>
