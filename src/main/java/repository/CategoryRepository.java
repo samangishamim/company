@@ -30,6 +30,7 @@ public class CategoryRepository {
         PreparedStatement ps = connection.prepareStatement(editCategoryQuery);
         ps.setString(1, category.getCategoryName());
         ps.setString(2, category.getCategoryDescription());
+        ps.setInt(3,category.getCategoryId());
 
         return ps.executeUpdate();
     }
