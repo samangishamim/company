@@ -30,9 +30,9 @@ public class Menu {
                 case 1 -> userService.SignUp();
                 case 2 -> {
                     boolean result = userService.signIn();
-                    if (result)
+                    if (result) {
                         subMenu();
-
+                    }
                 }
                 case 0 -> {
                     System.out.println("byeeeeee");
@@ -125,13 +125,13 @@ public class Menu {
             switch (choice) {
                 case 1 -> categoryService.addCategory();
                 case 2 -> {
-                    System.out.println("enter the brand id to edit ");
+                    System.out.println("enter the category id to edit ");
                     int categoryId = scanner.nextInt();
                     scanner.nextLine();
                     categoryService.editCat(categoryId);
                 }
                 case 3 -> {
-                    System.out.println("enter the brand id to delete ");
+                    System.out.println("enter the category id to delete ");
                     int categoryId = scanner.nextInt();
                     scanner.nextLine();
                     productService.deletByCategoryId(categoryId);
